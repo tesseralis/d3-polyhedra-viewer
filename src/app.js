@@ -1,3 +1,5 @@
+var update = React.addons.update;
+
 var GroupOption = React.createClass({
   render: function() {
     return (
@@ -74,7 +76,13 @@ var PolyhedronTable = React.createClass({
 
 var FilterablePolyhedronTable = React.createClass({
   getInitialState: function() {
-    return {polyhedra: []};
+    return {
+      polyhedra: [],
+      filters: {
+        type: [],
+        faces: []
+      }
+    };
   },
   componentDidMount: function() {
     // TODO coordinate these functions...
@@ -83,7 +91,7 @@ var FilterablePolyhedronTable = React.createClass({
       dataType: 'json',
       cache: false,
       success: function(data) {
-        this.setState({polyhedra: this.state.polyhedra.concat(data.polyhedra)});
+        this.setState(update(this.state, {polyhedra: {$push: data.polyhedra}}));
       }.bind(this),
       error: function(xhr, status, err) {
         console.error(this.props.url, status, err.toString());
@@ -94,7 +102,7 @@ var FilterablePolyhedronTable = React.createClass({
       dataType: 'json',
       cache: false,
       success: function(data) {
-        this.setState({polyhedra: this.state.polyhedra.concat(data.polyhedra)});
+        this.setState(update(this.state, {polyhedra: {$push: data.polyhedra}}));
       }.bind(this),
       error: function(xhr, status, err) {
         console.error(this.props.url, status, err.toString());
