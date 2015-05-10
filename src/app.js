@@ -30,7 +30,6 @@ var FilterBar = React.createClass({
       <form>
         <GroupFilter title="Type" options={['platonic', 'archimedean', 'johnson', 'prism', 'antiprism']} />
         <GroupFilter title="Faces" options={[3, 4, 5, 6, 8, 10]} />
-        <GroupFilter title="Symmetry" options={['T', 'O', 'I']} />
       </form>
     );
   }
@@ -78,12 +77,24 @@ var FilterablePolyhedronTable = React.createClass({
     return {polyhedra: []};
   },
   componentDidMount: function() {
+    // TODO coordinate these functions...
     $.ajax({
       url: "/data/platonic.json",
       dataType: 'json',
       cache: false,
       success: function(data) {
-        this.setState({polyhedra: data.polyhedra});
+        this.setState({polyhedra: this.state.polyhedra.concat(data.polyhedra)});
+      }.bind(this),
+      error: function(xhr, status, err) {
+        console.error(this.props.url, status, err.toString());
+      }.bind(this)
+    });
+    $.ajax({
+      url: "/data/archimedean.json",
+      dataType: 'json',
+      cache: false,
+      success: function(data) {
+        this.setState({polyhedra: this.state.polyhedra.concat(data.polyhedra)});
       }.bind(this),
       error: function(xhr, status, err) {
         console.error(this.props.url, status, err.toString());
