@@ -12,10 +12,10 @@ with open('archimedean.csv', 'r') as csvfile:
       "type": "archimedean",
       "vertices": int(v),
       "edges": int(e),
-      "faces": {n: int(f[n]) for n in f}
+      "faces": {n: int(f[n]) for n in f if int(f[n]) > 0}
     }
     if "snub" in name:
       entry["chiral"] = True
     polyhedra.append(entry)
   data = {"polyhedra": polyhedra}
-  print(json.dumps(data, indent=2))
+  print(json.dumps(data, indent=2, sort_keys=True))
