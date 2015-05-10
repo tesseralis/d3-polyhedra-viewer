@@ -1,10 +1,10 @@
 var GroupOption = React.createClass({
   render: function() {
     return (
-      <span>
+      <label className="checkbox-inline">
         <input type="checkbox" value={this.props.value}/>
-        <label>{this.props.value}</label>
-      </span>
+        {this.props.value}
+      </label>
     );
   }
 });
@@ -56,7 +56,7 @@ var PolyhedronTable = React.createClass({
       rows.push(<PolyhedronRow key={polyhedron.name} polyhedron={polyhedron} />);
     });
     return (
-      <table>
+      <table className="table">
         <thead>
           <tr>
             <th>Name</th>
@@ -103,7 +103,7 @@ var FilterablePolyhedronTable = React.createClass({
   },
   render: function() {
     return (
-      <div>
+      <div className="container-fluid">
         <FilterBar />
         <PolyhedronTable polyhedra={this.state.polyhedra}/>
       </div>
