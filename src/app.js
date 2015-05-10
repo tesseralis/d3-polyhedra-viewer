@@ -55,10 +55,17 @@ var GroupFilter = React.createClass({
 
 var RangeFilter = React.createClass({
   handleUserInput: function() {
-    this.props.onUserInput({
-      min: parseInt(this.refs.min.getDOMNode().value),
-      max: parseInt(this.refs.max.getDOMNode().value)
-    });
+    var min = this.refs.min.getDOMNode().value;
+    var max = this.refs.max.getDOMNode().value;
+
+    range = {}
+    if (min) {
+      range.min = parseInt(min);
+    }
+    if (max) {
+      range.max = parseInt(max);
+    }
+    this.props.onUserInput(range);
   },
   render: function() {
     return (
@@ -194,8 +201,8 @@ var FilterablePolyhedronTable = React.createClass({
       filters: {
         type: [],
         faces: [],
-        edges: {min: 10},
-        vertices: {min: 5, max: 20}
+        edges: {},
+        vertices: {}
       }
     };
   },
