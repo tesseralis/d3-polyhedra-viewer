@@ -1,0 +1,188 @@
+{
+  "polyhedra": [
+    {
+      "vertices": 12,
+      "faces": {
+        "3": 4,
+        "4": 0,
+        "5": 0,
+        "6": 4,
+        "8": 0,
+        "10": 0
+      },
+      "type": "archimedean",
+      "edges": 18,
+      "name": "truncated tetrahedron"
+    },
+    {
+      "vertices": 12,
+      "faces": {
+        "3": 8,
+        "4": 6,
+        "5": 0,
+        "6": 0,
+        "8": 0,
+        "10": 0
+      },
+      "type": "archimedean",
+      "edges": 24,
+      "name": "cuboctahedron"
+    },
+    {
+      "vertices": 24,
+      "faces": {
+        "3": 8,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "8": 6,
+        "10": 0
+      },
+      "type": "archimedean",
+      "edges": 36,
+      "name": "truncated cube"
+    },
+    {
+      "vertices": 24,
+      "faces": {
+        "3": 0,
+        "4": 6,
+        "5": 0,
+        "6": 8,
+        "8": 0,
+        "10": 0
+      },
+      "type": "archimedean",
+      "edges": 36,
+      "name": "truncated octahedron"
+    },
+    {
+      "vertices": 24,
+      "faces": {
+        "3": 8,
+        "4": 18,
+        "5": 0,
+        "6": 0,
+        "8": 0,
+        "10": 0
+      },
+      "type": "archimedean",
+      "edges": 48,
+      "name": "rhombicuboctahedron"
+    },
+    {
+      "vertices": 48,
+      "faces": {
+        "3": 0,
+        "4": 12,
+        "5": 0,
+        "6": 8,
+        "8": 6,
+        "10": 0
+      },
+      "type": "archimedean",
+      "edges": 72,
+      "name": "truncated cuboctahedron"
+    },
+    {
+      "faces": {
+        "3": 32,
+        "4": 6,
+        "5": 0,
+        "6": 0,
+        "8": 0,
+        "10": 0
+      },
+      "edges": 60,
+      "type": "archimedean",
+      "vertices": 24,
+      "chiral": true,
+      "name": "snub cube"
+    },
+    {
+      "vertices": 30,
+      "faces": {
+        "3": 20,
+        "4": 0,
+        "5": 12,
+        "6": 0,
+        "8": 0,
+        "10": 0
+      },
+      "type": "archimedean",
+      "edges": 60,
+      "name": "icosidodecahedron"
+    },
+    {
+      "vertices": 60,
+      "faces": {
+        "3": 20,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "8": 0,
+        "10": 20
+      },
+      "type": "archimedean",
+      "edges": 90,
+      "name": "truncated dodecahedron"
+    },
+    {
+      "vertices": 60,
+      "faces": {
+        "3": 0,
+        "4": 0,
+        "5": 12,
+        "6": 20,
+        "8": 0,
+        "10": 0
+      },
+      "type": "archimedean",
+      "edges": 90,
+      "name": "truncated icosahedron"
+    },
+    {
+      "vertices": 60,
+      "faces": {
+        "3": 20,
+        "4": 30,
+        "5": 12,
+        "6": 0,
+        "8": 0,
+        "10": 0
+      },
+      "type": "archimedean",
+      "edges": 120,
+      "name": "rhombicosidodecahedron"
+    },
+    {
+      "vertices": 120,
+      "faces": {
+        "3": 0,
+        "4": 30,
+        "5": 0,
+        "6": 20,
+        "8": 0,
+        "10": 12
+      },
+      "type": "archimedean",
+      "edges": 180,
+      "name": "truncated rhombicosidodecahedron"
+    },
+    {
+      "faces": {
+        "3": 80,
+        "4": 0,
+        "5": 12,
+        "6": 0,
+        "8": 0,
+        "10": 0
+      },
+      "edges": 150,
+      "type": "archimedean",
+      "vertices": 60,
+      "chiral": true,
+      "name": "snub dodecahedron"
+    }
+  ]
+}

@@ -1,47 +1,49 @@
-{"polyhedra": [
-  {
-    "name": "tetrahedron",
-    "type": "platonic",
-    "vertices": 4,
-    "edges": 6,
-    "faces": {
-      "3": 4
+{
+  "polyhedra": [
+    {
+      "name": "tetrahedron",
+      "type": "platonic",
+      "vertices": 4,
+      "edges": 6,
+      "faces": {
+        "3": 4
+      }
+    },
+    {
+      "name": "cube",
+      "type": "platonic",
+      "vertices": 8,
+      "edges": 12,
+      "faces": {
+        "4": 6
+      }
+    },
+    {
+      "name": "octahedron",
+      "type": "platonic",
+      "vertices": 6,
+      "edges": 12,
+      "faces": {
+        "3": 8
+      }
+    },
+    {
+      "name": "dodecahedron",
+      "type": "platonic",
+      "vertices": 20,
+      "edges": 30,
+      "faces": {
+        "5": 12
+      }
+    },
+    {
+      "name": "icosahedron",
+      "type": "platonic",
+      "vertices": 12,
+      "edges": 30,
+      "faces": {
+        "3": 20
+      }
     }
-  },
-  {
-    "name": "cube",
-    "type": "platonic",
-    "vertices": 8,
-    "edges": 12,
-    "faces": {
-      "4": 6
-    }
-  },
-  {
-    "name": "octahedron",
-    "type": "platonic",
-    "vertices": 6,
-    "edges": 12,
-    "faces": {
-      "3": 8
-    }
-  },
-  {
-    "name": "dodecahedron",
-    "type": "platonic",
-    "vertices": 20,
-    "edges": 30,
-    "faces": {
-      "5": 12
-    }
-  },
-  {
-    "name": "icosahedron",
-    "type": "platonic",
-    "vertices": 12,
-    "edges": 30,
-    "faces": {
-      "3": 20
-    }
-  }
-]}
+  ]
+}
