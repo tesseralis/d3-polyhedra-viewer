@@ -141,29 +141,19 @@ var FilterablePolyhedronTable = React.createClass({
     };
   },
   componentDidMount: function() {
-    // TODO coordinate these functions...
-    $.ajax({
-      url: "/data/platonic.json",
-      dataType: 'json',
-      cache: false,
-      success: function(data) {
-        this.setState(update(this.state, {polyhedra: {$push: data.polyhedra}}));
-      }.bind(this),
-      error: function(xhr, status, err) {
-        console.error(this.props.url, status, err.toString());
-      }.bind(this)
-    });
-    $.ajax({
-      url: "/data/archimedean.json",
-      dataType: 'json',
-      cache: false,
-      success: function(data) {
-        this.setState(update(this.state, {polyhedra: {$push: data.polyhedra}}));
-      }.bind(this),
-      error: function(xhr, status, err) {
-        console.error(this.props.url, status, err.toString());
-      }.bind(this)
-    });
+    ["platonic", "archimedean"].forEach(function(type) {
+      $.ajax({
+        url: "/data/" + type + ".json",
+        dataType: 'json',
+        cache: false,
+        success: function(data) {
+          this.setState(update(this.state, {polyhedra: {$push: data.polyhedra}}));
+        }.bind(this),
+        error: function(xhr, status, err) {
+          console.error(this.props.url, status, err.toString());
+        }.bind(this)
+      });
+    }.bind(this));
   },
   handleUserInput: function(filters) {
     this.setState(update(this.state, {filters: {$set: filters}}));
