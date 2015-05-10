@@ -53,6 +53,40 @@ var GroupFilter = React.createClass({
   }
 });
 
+var RangeFilter = React.createClass({
+  handleUserInput: function() {
+    this.props.onUserInput({
+      min: parseInt(this.refs.min.getDOMNode().value),
+      max: parseInt(this.refs.max.getDOMNode().value)
+    });
+  },
+  render: function() {
+    return (
+      <div className="form-group">
+        <h4>{this.props.title}</h4>
+        <div className="input-group">
+          <span className="input-group-addon">min</span>
+          <input 
+            type="text" 
+            ref="min"
+            className="form-control" 
+            onChange={this.handleUserInput}
+            value={this.props.values.min}
+          />
+          <span className="input-group-addon">max</span>
+          <input
+            type="text"
+            ref="max"
+            className="form-control" 
+            onChange={this.handleUserInput}
+            value={this.props.values.max}
+          />
+        </div>
+      </div>
+    );
+  }
+});
+
 var FilterBar = React.createClass({
   handleUserInput: function(filter) {
     return function(value) {
@@ -63,6 +97,7 @@ var FilterBar = React.createClass({
   },
   render: function() {
     return (
+      <div>
       <form>
         <GroupFilter
           title="Type" 
@@ -76,7 +111,18 @@ var FilterBar = React.createClass({
           options={[3, 4, 5, 6, 8, 10]}
           selectedOptions={this.props.filters.faces}
         />
+        <RangeFilter
+          title="Edges"
+          onUserInput={this.handleUserInput("edges")}
+          values={this.props.filters.edges}
+        />
+        <RangeFilter 
+          title="Vertices"
+          onUserInput={this.handleUserInput("vertices")}
+          values={this.props.filters.vertices}
+        />
       </form>
+      </div>
     );
   }
 });
@@ -108,11 +154,22 @@ var PolyhedronTable = React.createClass({
       };
       return _.every(this.props.filters.faces, hasFace);
     }.bind(this);
+    var inRange = function(number, range) {
+      if (range.min && number < range.min) {
+        return false;
+      }
+      if (range.max && number > range.max) {
+        return false;
+      }
+      return true;
+    }
     this.props.polyhedra.forEach(function(polyhedron) {
-      if (isType(polyhedron) && hasFaces(polyhedron)) { 
+      if (isType(polyhedron) && hasFaces(polyhedron)
+          && inRange(polyhedron.edges, this.props.filters.edges)
+          && inRange(polyhedron.vertices, this.props.filters.vertices)) { 
         rows.push(<PolyhedronRow key={polyhedron.name} polyhedron={polyhedron} />);
       }
-    });
+    }.bind(this));
     return (
       <table className="table">
         <thead>
@@ -136,7 +193,9 @@ var FilterablePolyhedronTable = React.createClass({
       polyhedra: [],
       filters: {
         type: [],
-        faces: []
+        faces: [],
+        edges: {min: 10},
+        vertices: {min: 5, max: 20}
       }
     };
   },
