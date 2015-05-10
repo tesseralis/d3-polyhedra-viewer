@@ -141,7 +141,7 @@ var FilterablePolyhedronTable = React.createClass({
     };
   },
   componentDidMount: function() {
-    ["platonic", "archimedean"].forEach(function(type) {
+    ["platonic", "archimedean", "prism", "antiprism"].forEach(function(type) {
       $.ajax({
         url: "/data/" + type + ".json",
         dataType: 'json',
