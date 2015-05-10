@@ -54,8 +54,20 @@ var PolyhedronRow = React.createClass({
 var PolyhedronTable = React.createClass({
   render: function() {
     var rows = [];
+    var isType = function(polyhedron) {
+      type = this.props.filters.type;
+      return _.isEmpty(type) || _.includes(type, polyhedron.type);
+    }.bind(this);
+    var hasFaces = function(polyhedron) {
+      var hasFace = function(face) {
+        return _.get(polyhedron.faces, face, 0) > 0;
+      };
+      return _.every(this.props.filters.faces, hasFace);
+    }.bind(this);
     this.props.polyhedra.forEach(function(polyhedron) {
-      rows.push(<PolyhedronRow key={polyhedron.name} polyhedron={polyhedron} />);
+      if (isType(polyhedron) && hasFaces(polyhedron)) { 
+        rows.push(<PolyhedronRow key={polyhedron.name} polyhedron={polyhedron} />);
+      }
     });
     return (
       <table className="table">
@@ -109,11 +121,17 @@ var FilterablePolyhedronTable = React.createClass({
       }.bind(this)
     });
   },
+  handleUserInput: function(filters) {
+    this.setState(update(this.state, {filters: {$set: filters}}));
+  },
   render: function() {
     return (
       <div className="container-fluid">
-        <FilterBar />
-        <PolyhedronTable polyhedra={this.state.polyhedra}/>
+        <FilterBar onUserInput={this.handleUserInput /* TODO implement */}/>
+        <PolyhedronTable
+          polyhedra={this.state.polyhedra}
+          filters={this.state.filters}
+        />
       </div>
     );
   }
