@@ -2,8 +2,8 @@ var GroupOption = React.createClass({
   render: function() {
     return (
       <span>
-        <input type="checkbox" id={this.props.value} value={this.props.value}/>
-        <label for={this.props.value}>{this.props.value}</label>
+        <input type="checkbox" value={this.props.value}/>
+        <label>{this.props.value}</label>
       </span>
     );
   }
@@ -13,7 +13,7 @@ var GroupFilter = React.createClass({
   render: function() {
     var elements = [];
     this.props.options.forEach(function(option) {
-      elements.push(<GroupOption value={option} />);
+      elements.push(<GroupOption key={option} value={option} />);
     });
     return (
       <div>
@@ -54,7 +54,7 @@ var PolyhedronTable = React.createClass({
   render: function() {
     var rows = [];
     this.props.polyhedra.forEach(function(polyhedron) {
-      rows.push(<PolyhedronRow polyhedron={polyhedron} />);
+      rows.push(<PolyhedronRow key={polyhedron.name} polyhedron={polyhedron} />);
     });
     return (
       <table>
