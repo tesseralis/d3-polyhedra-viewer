@@ -22,7 +22,6 @@ var GroupOption = React.createClass({
 var GroupFilter = React.createClass({
   handleUserInput: function(option) {
       return function(isChecked) {
-        console.log(this.props.selectedOptions);
         var newSelectedOptions;
         if (isChecked) {
           newSelectedOptions = this.props.selectedOptions.concat([option]);
@@ -31,7 +30,6 @@ var GroupFilter = React.createClass({
             return e !== option;
           });
         }
-        console.log(newSelectedOptions);
         this.props.onUserInput(newSelectedOptions);
       }.bind(this);
   },
