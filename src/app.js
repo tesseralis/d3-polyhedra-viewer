@@ -12,8 +12,11 @@ var PolyhedronRow = React.createClass({
   render: function() {
     return (
       <tr>
-        <td>{this.props.name}</td>
-        <td>{this.props.type}</td>
+        <td>{this.props.polyhedron.name}</td>
+        <td>{this.props.polyhedron.type}</td>
+        <td>{this.props.polyhedron.vertices}</td>
+        <td>{this.props.polyhedron.edges}</td>
+        <td>{this.props.polyhedron.faces /* TODO fix with sum */}</td>
       </tr>
     );
   }
@@ -23,7 +26,7 @@ var PolyhedronTable = React.createClass({
   render: function() {
     var rows = [];
     this.props.polyhedra.forEach(function(polyhedron) {
-      rows.push(<PolyhedronRow key = {polyhedron.name} name={polyhedron.name} type={polyhedron.type} />);
+      rows.push(<PolyhedronRow polyhedron={polyhedron} />);
     });
     return (
       <table>
@@ -31,6 +34,9 @@ var PolyhedronTable = React.createClass({
           <tr>
             <th>Name</th>
             <th>Type</th>
+            <th>Vertices</th>
+            <th>Edges</th>
+            <th>Faces</th>
           </tr>
         </thead>
         <tbody>{rows}</tbody>
