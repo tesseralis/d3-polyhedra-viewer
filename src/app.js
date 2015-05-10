@@ -74,73 +74,31 @@ var PolyhedronTable = React.createClass({
 });
 
 var FilterablePolyhedronTable = React.createClass({
+  getInitialState: function() {
+    return {polyhedra: []};
+  },
+  componentDidMount: function() {
+    $.ajax({
+      url: "/data/platonic.json",
+      dataType: 'json',
+      cache: false,
+      success: function(data) {
+        this.setState({polyhedra: data.polyhedra});
+      }.bind(this),
+      error: function(xhr, status, err) {
+        console.error(this.props.url, status, err.toString());
+      }.bind(this)
+    });
+  },
   render: function() {
     return (
       <div>
         <FilterBar />
-        <PolyhedronTable polyhedra={this.props.polyhedra}/>
+        <PolyhedronTable polyhedra={this.state.polyhedra}/>
       </div>
     );
   }
 });
 
-/* TODO move this to a JSON file */
-var POLYHEDRA = [
-  {
-    name: 'tetrahedron',
-    type: 'platonic',
-    vertices: 4,
-    edges: 6,
-    faces: {
-      3: 4
-    },
-    symmetry: 'T',
-    chiral: false
-  },
-  {
-    name: 'cube',
-    type: 'platonic',
-    vertices: 8,
-    edges: 12,
-    faces: {
-      4: 6
-    },
-    symmetry: 'O',
-    chiral: false
-  },
-  {
-    name: 'octahedron',
-    type: 'platonic',
-    vertices: 6,
-    edges: 12,
-    faces: {
-      3: 8
-    },
-    symmetry: 'O',
-    chiral: false
-  },
-  {
-    name: 'dodecahedron',
-    type: 'platonic',
-    vertices: 20,
-    edges: 30,
-    faces: {
-      5: 12
-    },
-    symmetry: 'I',
-    chiral: false
-  },
-  {
-    name: 'icosahedron',
-    type: 'platonic',
-    vertices: 12,
-    edges: 30,
-    faces: {
-      3: 20
-    },
-    symmetry: 'I',
-    chiral: false
-  }
-];
+React.render(<FilterablePolyhedronTable/>, document.getElementById('example'));
 
-React.render(<FilterablePolyhedronTable polyhedra={POLYHEDRA}/>, document.getElementById('example'));
