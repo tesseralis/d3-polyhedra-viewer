@@ -137,7 +137,7 @@ var FilterablePolyhedronTable = React.createClass({
     return {
       polyhedra: [],
       filters: {
-        type: ['platonic'],
+        type: [],
         faces: []
       }
     };
