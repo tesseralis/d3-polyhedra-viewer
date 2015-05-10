@@ -43,7 +43,7 @@ var PolyhedronRow = React.createClass({
         <td>{this.props.polyhedron.type}</td>
         <td>{this.props.polyhedron.vertices}</td>
         <td>{this.props.polyhedron.edges}</td>
-        <td>{this.props.polyhedron.faces /* TODO fix with sum */}</td>
+        <td>{_.sum(_.values(this.props.polyhedron.faces))}</td>
       </tr>
     );
   }

@@ -6,7 +6,7 @@ rhombicuboctahedron,               8,18, 0, 0, 0, 0, 48, 24
 truncated cuboctahedron,           0,12, 0, 8, 6, 0, 72, 48
 snub cube,                        32, 6, 0, 0, 0, 0, 60, 24
 icosidodecahedron,                20, 0,12, 0, 0, 0, 60, 30
-truncated dodecahedron,           20, 0, 0, 0, 0,20, 90, 60
+truncated dodecahedron,           20, 0, 0, 0, 0,12, 90, 60
 truncated icosahedron,             0, 0,12,20, 0, 0, 90, 60
 rhombicosidodecahedron,           20,30,12, 0, 0, 0,120, 60
 truncated rhombicosidodecahedron,  0,30, 0,20, 0,12,180,120 

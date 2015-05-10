@@ -86,7 +86,7 @@
       "edges": 90,
       "faces": {
         "3": 20,
-        "10": 20
+        "10": 12
       },
       "name": "truncated dodecahedron",
       "type": "archimedean",
