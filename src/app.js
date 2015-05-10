@@ -1,10 +1,18 @@
 var update = React.addons.update;
 
 var GroupOption = React.createClass({
+  handleChange: function() {
+    this.props.onUserInput(this.refs.isSelected.getDOMNode().checked);
+  },
   render: function() {
     return (
       <label className="checkbox-inline">
-        <input type="checkbox" value={this.props.value}/>
+        <input
+          type="checkbox"
+          onChange={this.handleChange}
+          ref="isSelected"
+          checked={this.props.checked}
+          value={this.props.value}/>
         {this.props.value}
       </label>
     );
@@ -12,11 +20,32 @@ var GroupOption = React.createClass({
 });
 
 var GroupFilter = React.createClass({
+  handleUserInput: function(option) {
+      return function(isChecked) {
+        console.log(this.props.selectedOptions);
+        var newSelectedOptions;
+        if (isChecked) {
+          newSelectedOptions = this.props.selectedOptions.concat([option]);
+        } else {
+          newSelectedOptions = _.remove(this.props.selectedOptions, function(e) {
+            return e !== option;
+          });
+        }
+        console.log(newSelectedOptions);
+        this.props.onUserInput(newSelectedOptions);
+      }.bind(this);
+  },
   render: function() {
     var elements = [];
     this.props.options.forEach(function(option) {
-      elements.push(<GroupOption key={option} value={option} />);
-    });
+      elements.push(
+        <GroupOption 
+          onUserInput={this.handleUserInput(option)}
+          checked={_.includes(this.props.selectedOptions, option)}
+          key={option}
+          value={option}
+        />);
+    }.bind(this));
     return (
       <div>
         <h4>{this.props.title}</h4>
@@ -27,11 +56,28 @@ var GroupFilter = React.createClass({
 });
 
 var FilterBar = React.createClass({
+  handleUserInput: function(filter) {
+    return function(value) {
+      updater = {};
+      updater[filter] = {$set: value};
+      this.props.onUserInput(update(this.props.filters, updater));
+    }.bind(this);
+  },
   render: function() {
     return (
       <form>
-        <GroupFilter title="Type" options={['platonic', 'archimedean', 'johnson', 'prism', 'antiprism']} />
-        <GroupFilter title="Faces" options={[3, 4, 5, 6, 8, 10]} />
+        <GroupFilter
+          title="Type" 
+          onUserInput={this.handleUserInput("type")} 
+          options={['platonic', 'archimedean', 'johnson', 'prism', 'antiprism']}
+          selectedOptions={this.props.filters.type}
+        />
+        <GroupFilter 
+          title="Faces" 
+          onUserInput={this.handleUserInput("faces")} 
+          options={[3, 4, 5, 6, 8, 10]}
+          selectedOptions={this.props.filters.faces}
+        />
       </form>
     );
   }
@@ -91,7 +137,7 @@ var FilterablePolyhedronTable = React.createClass({
     return {
       polyhedra: [],
       filters: {
-        type: [],
+        type: ['platonic'],
         faces: []
       }
     };
@@ -127,7 +173,10 @@ var FilterablePolyhedronTable = React.createClass({
   render: function() {
     return (
       <div className="container-fluid">
-        <FilterBar onUserInput={this.handleUserInput /* TODO implement */}/>
+        <FilterBar
+          onUserInput={this.handleUserInput}
+          filters={this.state.filters}
+        />
         <PolyhedronTable
           polyhedra={this.state.polyhedra}
           filters={this.state.filters}
