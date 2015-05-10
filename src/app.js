@@ -1,9 +1,37 @@
+var GroupOption = React.createClass({
+  render: function() {
+    return (
+      <li>
+        <input type="checkbox" id={this.props.value} value={this.props.value}/>
+        <label for={this.props.value}>{this.props.value}</label>
+      </li>
+    );
+  }
+});
+
+var GroupFilter = React.createClass({
+  render: function() {
+    var elements = [];
+    this.props.options.forEach(function(option) {
+      elements.push(<GroupOption value={option} />);
+    });
+    return (
+      <div>
+        <h4>{this.props.title}</h4>
+        <ul>{elements}</ul>
+      </div>
+    );
+  }
+});
+
 var FilterBar = React.createClass({
   render: function() {
     return (
-      <div>
-      Filter Bar
-      </div>
+      <form>
+        <GroupFilter title="type" options={['platonic', 'archimedean']} />
+        <GroupFilter title="faces" options={[3, 4, 5, 6, 8, 10]} />
+        <GroupFilter title="symmetry" options={['T', 'O', 'I']} />
+      </form>
     );
   }
 });
