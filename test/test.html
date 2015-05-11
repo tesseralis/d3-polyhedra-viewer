@@ -26,12 +26,30 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/3.8.0/lodash.min.js"></script>
   </head>
   <body>
+    <div class="container-fluid">
+      <div class="panel">
+        <form>
+          <div class="form-group">
+            <label for="jn">Johnson number</label>
+            <input type="number" id="jn" placeholder="Enter Johnson number">
+          </div>
+        </form>
+      </div>
+    </div>
     <x3d width='500px' height='400px'> 
       <scene>
-        <inline id="deer" url="/test/j01.x3d"> </inline> 
+        <inline id="solid" url="/test/johnson-x3d/j92.x3d"> </inline> 
       </scene> 
     </x3d>           
     <script>
+      $('#jn').change(function() {
+        //console.log($('#jn').val());
+        var value = $("#jn").val();
+        if (value.length === 1) {
+          value = "0" + value;
+        }
+        $("#solid").attr("url", "/test/johnson-x3d/j"+value+".x3d");
+      }).change();
       //setTimeout(function() {
       //  console.log("setting url");
       //  $("#deer").attr("url", "Deer2.x3d");

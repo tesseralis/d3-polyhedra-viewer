@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.0//EN"   "http://www.web3d.org/specifications/x3d-3.0.dtd">
+<X3D profile="Full">
+  <head>
+    <meta name="filename" content="johnson-x3d/j40.x3d"/>
+    <meta name="description" content="*enter description here, short-sentence summaries preferred*"/>
+    <meta name="author" content="*enter name of original author here*"/>
+    <meta name="translator" content="*if manually translating VRML-to-X3D, enter name of person translating here*"/>
+    <meta name="created" content="*enter date of initial version here*"/>
+    <meta name="translated" content="10 May 2015"/>
+    <meta name="revised"    content="10 May 2015"/>
+    <meta name="version" content="*enter version here*"/>
+    <meta name="reference" content="*enter reference citation or relative/online url here*"/>
+    <meta name="reference" content="*enter additional url/bibliographic reference information here*"/>
+    <meta name="copyright" content="*enter copyright information here* Example:  Copyright (c) Web3D Consortium Inc. 2002"/>
+    <meta name="drawing" content="*enter drawing filename/url here*"/>
+    <meta name="image" content="*enter image filename/url here*"/>
+    <meta name="movie" content="*enter movie filename/url here*"/>
+    <meta name="photo" content="*enter photo filename/url here*"/>
+    <meta name="keywords" content="*enter keywords here*"/>
+    <meta name="url" content="*enter online url address for this file here*"/>
+    <meta name="generator" content="Vrml97ToX3dNist, http://ovrt.nist.gov/v2_x3d.html"/>
+  </head>
+  <Scene>
+  <ProtoDeclare name="HUD">
+    <ProtoInterface>
+      <field  name="children" type="MFNode" accessType="initializeOnly">
+      </field>
+      <field  name="rotation" type="SFRotation" value="0.0 0.0 0.0  0.0" accessType="inputOutput"/>
+      <field  name="size" type="SFVec3f" value="3.4E38 3.4E38 3.4E38" accessType="inputOutput"/>
+      <field  name="translation" type="SFVec3f" value="0.0 0.0 -10.0" accessType="inputOutput"/>
+    </ProtoInterface>
+    <ProtoBody>
+          <Group >
+              <ProximitySensor  DEF="UserPosition"  center="0.0 0.0 0.0">
+                  <IS>
+                    <connect nodeField="size" protoField="size"/>
+                  </IS>
+              </ProximitySensor>
+              <Transform  DEF="HUD" >
+                  <Transform >
+                      <Transform >
+                          <IS>
+                            <connect nodeField="translation" protoField="translation"/>
+                            <connect nodeField="children" protoField="children"/>
+                            <connect nodeField="rotation" protoField="rotation"/>
+                          </IS>
+                      </Transform>
+                  </Transform>
+              </Transform>
+          </Group>
+<ROUTE fromNode="UserPosition" fromField="position_changed" toNode="HUD" toField="translation"/>
+<ROUTE fromNode="UserPosition" fromField="orientation_changed" toNode="HUD" toField="rotation"/>
+    </ProtoBody>
+  </ProtoDeclare>
+  <ProtoDeclare name="Switcher">
+    <ProtoInterface>
+      <field  name="transp" type="SFFloat" accessType="outputOnly"/>
+      <field  name="switchvalue" type="SFInt32" accessType="outputOnly"/>
+      <field  name="isActive" type="SFBool" accessType="inputOnly"/>
+    </ProtoInterface>
+    <ProtoBody>
+          <Script >
+            <field name="transp" type="SFFloat" accessType="outputOnly"/>
+            <field name="switchvalue" type="SFInt32" accessType="outputOnly"/>
+            <field name="isActive" type="SFBool" accessType="inputOnly"/>
+            <field name="first" type="SFBool" value="true" accessType="initializeOnly"/>
+            <IS>
+            <connect nodeField="transp" protoField="transp"/>
+            <connect nodeField="switchvalue" protoField="switchvalue"/>
+            <connect nodeField="isActive" protoField="isActive"/>
+            </IS>
+            <![CDATA[javascript:
+       function isActive(eventValue) {
+          if (eventValue == true) {
+            if (first == true) {
+              switchvalue = 1;
+              first = false;
+              }
+            if (switchvalue == 0) {
+              switchvalue = 1;
+              transp = 0;
+              }
+            else {
+              if (switchvalue == 1) {
+              switchvalue = 2;
+              transp = 0.7;
+              }
+              else {
+                if (switchvalue ==2) {
+                switchvalue = 0;
+               transp = 0;
+                }
+            } } } }
+            ]]>
+          </Script>
+    </ProtoBody>
+  </ProtoDeclare>
+  <WorldInfo  info='"Author: Jim McNeill"' title="J40   Generation Date: 04-03-2003"/>
+  <Background  skyColor="0.0 0.0 0.0 "/>
+  <NavigationInfo  headlight="true" type='"EXAMINE"' avatarSize=" 0.0 0.0 0.0 0.0 0.0 0.0"/>
+  <Viewpoint  position="0.0 0.0 6.34" description="Wide Angle"/>
+  <Viewpoint  position="0.0 0.0 31.701" description="Telephoto" fieldOfView="0.15"/>
+  <Viewpoint  position="0.0 0.0 0.0" description="Origin"/>
+  <Viewpoint  position="0.0 0.0 0.0" description="Origin Wide Angle" fieldOfView="1.0"/>
+  <Viewpoint  position="0.0 0.0 0.0" description="Origin Fish-Eye" fieldOfView="1.57"/>
+  <ProtoInstance name="HUD">
+    <fieldValue name="children">
+      <Transform >
+          <TouchSensor  DEF="SENSOR" />
+          <Transform  DEF="POINT" >
+              <Shape >
+                  <Appearance >
+                      <Material  transparency="0.5" diffuseColor="0.502 0.502 0.502"/>
+                  </Appearance>
+                  <Box  size="0.2 0.05 0.001"/>
+              </Shape>
+          </Transform>
+          <Switch  DEF="CMDTXT"  whichChoice="1">
+              <Transform  translation="-0.15 -0.83 -2.0">
+                  <Shape >
+                      <Text  string='"--> solid"'>
+                          <FontStyle  family='"SANS"' size="0.08"/>
+                      </Text>
+                  </Shape>
+              </Transform>
+              <Transform  translation="-0.15 -0.83 -2.0">
+                  <Shape >
+                      <Text  string='"--> trans"'>
+                          <FontStyle  family='"SANS"' size="0.08"/>
+                      </Text>
+                  </Shape>
+              </Transform>
+              <Transform  translation="-0.15 -0.83 -2.0">
+                  <Shape >
+                      <Text  string='"--> frame"'>
+                          <FontStyle  family='"SANS"' size="0.08"/>
+                      </Text>
+                  </Shape>
+              </Transform>
+          </Switch>
+      </Transform>
+    </fieldValue>
+    <fieldValue name="translation" value="0.0 -0.82 -2.0"/>
+  </ProtoInstance>
+  <Group >
+      <Switch  DEF="POLY"  whichChoice="1">
+          <Transform >
+              <Shape  DEF="FRAME" >
+                  <Appearance >
+                      <Material  shininess="1.0" specularColor="1.0 1.0 1.0"/>
+                  </Appearance>
+                  <IndexedFaceSet  convex="false" colorIndex=" 5 5 5 5 5 4 4 4 4 3 3 3 4 4 4 4 3 3 3 4 4 4 4 3 3 3 4 4 4 4 3 3 3 4 4 4 4 3 3 3 5 5 5 5 5 5 5 5 5 5 3 3 3 3 3 3 5 5 5 5 5 3 3 3 3 3 3 5 5 5 5 5 3 3 3 3 3 3 5 5 5 5 5 3 3 3 3 3 3 5 5 5 5 5 3 3 3 3 3 3 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4" coordIndex=" 4 6 36 35 -1 6 14 37 36 -1 14 18 38 37 -1 18 11 39 38 -1 11 4 35 39 -1 6 4 41 40 -1 4 0 42 41 -1 0 1 43 42 -1 1 6 40 43 -1 6 1 45 44 -1 1 8 46 45 -1 8 6 44 46 -1 14 6 48 47 -1 6 8 49 48 -1 8 16 50 49 -1 16 14 47 50 -1 14 16 52 51 -1 16 24 53 52 -1 24 14 51 53 -1 18 14 55 54 -1 14 24 56 55 -1 24 27 57 56 -1 27 18 54 57 -1 18 27 59 58 -1 27 26 60 59 -1 26 18 58 60 -1 11 18 62 61 -1 18 26 63 62 -1 26 19 64 63 -1 19 11 61 64 -1 11 19 66 65 -1 19 9 67 66 -1 9 11 65 67 -1 4 11 69 68 -1 11 9 70 69 -1 9 2 71 70 -1 2 4 68 71 -1 4 2 73 72 -1 2 0 74 73 -1 0 4 72 74 -1 20 17 76 75 -1 17 25 77 76 -1 25 32 78 77 -1 32 28 79 78 -1 28 20 75 79 -1 20 21 81 80 -1 21 12 82 81 -1 12 5 83 82 -1 5 10 84 83 -1 10 20 80 84 -1 20 10 86 85 -1 10 17 87 86 -1 17 20 85 87 -1 10 5 89 88 -1 5 3 90 89 -1 3 10 88 90 -1 17 10 92 91 -1 10 3 93 92 -1 3 7 94 93 -1 7 15 95 94 -1 15 17 91 95 -1 17 15 97 96 -1 15 25 98 97 -1 25 17 96 98 -1 15 7 100 99 -1 7 13 101 100 -1 13 15 99 101 -1 25 15 103 102 -1 15 13 104 103 -1 13 23 105 104 -1 23 30 106 105 -1 30 25 102 106 -1 25 30 108 107 -1 30 32 109 108 -1 32 25 107 109 -1 30 23 111 110 -1 23 31 112 111 -1 31 30 110 112 -1 32 30 114 113 -1 30 31 115 114 -1 31 33 116 115 -1 33 34 117 116 -1 34 32 113 117 -1 32 34 119 118 -1 34 28 120 119 -1 28 32 118 120 -1 34 33 122 121 -1 33 29 123 122 -1 29 34 121 123 -1 28 34 125 124 -1 34 29 126 125 -1 29 22 127 126 -1 22 21 128 127 -1 21 28 124 128 -1 28 21 130 129 -1 21 20 131 130 -1 20 28 129 131 -1 21 22 133 132 -1 22 12 134 133 -1 12 21 132 134 -1 26 31 136 135 -1 31 23 137 136 -1 23 19 138 137 -1 19 26 135 138 -1 19 23 140 139 -1 23 13 141 140 -1 13 9 142 141 -1 9 19 139 142 -1 9 13 144 143 -1 13 7 145 144 -1 7 2 146 145 -1 2 9 143 146 -1 2 7 148 147 -1 7 3 149 148 -1 3 0 150 149 -1 0 2 147 150 -1 0 3 152 151 -1 3 5 153 152 -1 5 1 154 153 -1 1 0 151 154 -1 1 5 156 155 -1 5 12 157 156 -1 12 8 158 157 -1 8 1 155 158 -1 8 12 160 159 -1 12 22 161 160 -1 22 16 162 161 -1 16 8 159 162 -1 16 22 164 163 -1 22 29 165 164 -1 29 24 166 165 -1 24 16 163 166 -1 24 29 168 167 -1 29 33 169 168 -1 33 27 170 169 -1 27 24 167 170 -1 27 33 172 171 -1 33 31 173 172 -1 31 26 174 173 -1 26 27 171 174 -1" colorPerVertex="false" solid="false">
+                      <Coordinate  DEF="C1"  point="-0.43714064 1.2771281 1.2079942, -0.4062305 1.7360684 0.3200649, -0.0696844 0.51170075 1.7362905, -1.1809309 0.69425386 0.88083404, 0.5218709 1.013163 1.1049442, -1.1500207 1.1531942 -0.00709525, 0.55278105 1.4721032 0.21701498, -0.8134746 -0.07117344 1.4091303, 0.01123936 1.7132219 -0.5883386, 0.55578244 -0.2678464 1.7031624, -1.6897074 0.31896484 0.10604081, 1.1473377 0.23361582 1.0718162, -0.73255086 1.1303477 -0.91549873, -0.1880078 -0.8507206 1.3760023, 1.1973513 0.9761967 -0.3648835, -1.0951507 -0.9195226 0.9608421, 0.6558097 1.2173154 -1.1702371, -1.6366924 -0.67840385 0.1554885, 1.5648075 0.21076941 0.16341275, 1.2003528 -0.7637529 1.121264, -1.6057823 -0.21946362 -0.73244077, -1.014227 0.2819986 -1.3637869, -0.08798053 0.63444126 -1.4973972, 0.45656252 -1.3466271 0.7941038, 1.2812765 0.43776828 -1.2033651, -1.0112256 -1.4579511 0.12236051, 1.6178226 -0.7865993 0.21286045, 1.6487328 -0.32765904 -0.67506886, -0.9612119 -0.7153701 -1.3143393, 0.5374863 -0.14510593 -1.5305252, -0.05221404 -1.7219162 0.01931058, 0.87403244 -1.3694735 -0.11429971, -0.59375566 -1.4807974 -0.786043, 0.9049425 -0.91053325 -1.002229, -0.0022004 -0.97933525 -1.4173892, 0.54257554 1.0030499 1.0758905, 0.57213825 1.4419837 0.22666837, 1.1886101 0.967695 -0.32986367, 1.540048 0.23563461 0.1754028, 1.1407766 0.25748506 1.0442067, 0.5230834 1.466254 0.24674435, 0.49402785 1.0348501 1.0813979, -0.407443 1.2829773 1.1782649, -0.37838748 1.7143812 0.3436113, 0.5008003 1.4895998 0.19268645, -0.3585478 1.7261329 0.28502712, 0.01553733 1.7056608 -0.5289723, 1.161768 0.99830747 -0.37158716, 0.5558719 1.4644595 0.17539743, 0.04682272 1.6911112 -0.58163494, 0.65271884 1.2249591 -1.1286196, 1.181499 0.9658976 -0.4218276, 0.6962361 1.1819586 -1.1434864, 1.2567024 0.48342428 -1.1731716, 1.5563017 0.21757936 0.12240941, 1.2108928 0.93708104 -0.37418905, 1.2897824 0.4309583 -1.1623617, 1.6351913 -0.28854337 -0.66576326, 1.5695513 0.15756783 0.1360798, 1.6447548 -0.32490548 -0.61526424, 1.6170568 -0.7361513 0.18038875, 1.1614523 0.20300935 1.0460476, 1.5538739 0.18153374 0.19214828, 1.603708 -0.7559928 0.23862912, 1.2112864 -0.7345172 1.0925285, 1.1286821 0.18169478 1.0953996, 1.1761876 -0.71202433 1.1397086, 0.59860307 -0.26765394 1.6611344, 0.52288824 0.9747327 1.1228908, 1.1108271 0.24195836 1.0917505, 0.55476505 -0.22941612 1.6852158, -0.03317374 0.50335824 1.7163562, 0.46815768 1.0049359 1.1303844, -0.06192138 0.5555871 1.6961192, -0.39119044 1.2414689 1.2227252, -1.5864251 -0.24958317 -0.7227874, -1.6159878 -0.68851703 0.1264348, -1.0177866 -1.4340818 0.09475093, -0.6185153 -1.4559323 -0.774053, -0.9699532 -0.7238718 -1.2793194, -1.5897696 -0.18666144 -0.7259069, -1.0240017 0.29294074 -1.3297311, -0.75460464 1.1043082 -0.90098494, -1.153876 1.1261586 -0.03218106, -1.6700363 0.32829556 0.07602311, -1.6097603 -0.21671006 -0.67263615, -1.6849637 0.26576328 0.07870787, -1.6374581 -0.62795585 0.12301681, -1.6533875 0.3608638 0.12896128, -1.1697868 1.1083975 0.02758267, -1.1974846 0.69715166 0.82323563, -1.6212823 -0.6545488 0.1793327, -1.6719863 0.29934204 0.13204055, -1.1853887 0.65827125 0.87305856, -0.83395076 -0.07378911 1.378325, -1.1033479 -0.8851566 0.9495789, -1.596266 -0.71376073 0.18223917, -1.111003 -0.92982167 0.90389794, -1.0357996 -1.412295 0.15255395, -1.0539688 -0.8877515 0.9907528, -0.80156535 -0.12756541 1.3924536, -0.24109896 -0.8260997 1.3627683, -0.98362195 -1.4492934 0.14555886, -1.0638887 -0.9343364 0.9474889, -0.19629034 -0.8685337 1.3445512, 0.4201815 -1.3428223 0.7880192, -0.06641619 -1.7017516 0.04700114, -0.9635429 -1.4678864 0.08732273, -0.10419472 -1.7044195 -0.00501794, -0.5894577 -1.4883586 -0.7266767, -0.00250338 -1.6967068 0.0415218, 0.45339957 -1.3604189 0.73579615, 0.8274847 -1.3808911 -0.07820329, -0.55801344 -1.4725852 -0.7805541, -0.04007896 -1.703193 -0.01030797, 0.84579 -1.3661141 -0.13809384, 0.8753527 -0.9271803 -0.987316, 0.00775445 -0.992983 -1.3843783, -0.5859927 -1.4369111 -0.8262142, -0.05591361 -0.98756236 -1.3919489, -0.91526175 -0.7510293 -1.2996082, 0.04791925 -0.9480533 -1.4069268, 0.8607891 -0.8864014 -1.0349113, 0.53152007 -0.20051967 -1.5083053, -0.9326333 -0.6922357 -1.3191496, -0.01542753 -0.9446939 -1.4177073, 0.50073284 -0.14683083 -1.5259116, -0.09746828 0.5987339 -1.4942276, -0.9833373 0.26165512 -1.3664417, -0.985377 -0.6636415 -1.2958946, -1.0328826 0.23007756 -1.3402035, -1.5629616 -0.21927115 -0.77446884, -0.9723833 0.32359523 -1.3528862, -0.14239521 0.639411 -1.4726113, -0.7199798 1.0837814 -0.95118546, 1.5829848 -0.80340016 0.23029774, 0.883822 -1.3513019 -0.0772328, 0.49140033 -1.3298262 0.7766665, 1.1905631 -0.78192455 1.084197, 1.1587019 -0.76636195 1.1289061, 0.45953912 -1.3142637 0.82137555, -0.14635698 -0.84811157 1.3683602, 0.55280584 -0.30020982 1.6758907, 0.5147047 -0.2619462 1.6943414, -0.1844581 -0.80984795 1.3868109, -0.7723969 -0.07707362 1.4179512, -0.0732341 0.47082812 1.7254817, -0.10302179 0.51717734 1.7106267, -0.8021846 -0.03072439 1.4030962, -1.1475935 0.68877727 0.9064977, -0.44843066 1.2366791 1.2140282, -0.45852706 1.2734101 1.1715415, -1.1576898 0.72550833 0.864011, -1.1286343 1.1569122 0.02935743, -0.42947152 1.704814 0.336888, -0.41602013 1.7178967 0.282998, -1.115183 1.169995 -0.02453255, -0.7227613 1.1485194 -0.87843186, -0.02359844 1.6964211 -0.57090133, 0.00826276 1.6808585 -0.61561036, -0.6909 1.1329567 -0.9231409, -0.08500394 0.6668047 -1.4701254, 0.61415887 1.2147064 -1.1625949, 0.65226 1.1764427 -1.1810458, -0.04690282 0.62854105 -1.4885763, 0.541036 -0.10423329 -1.5197166, 1.2401989 0.44366845 -1.2121861, 1.2699865 0.39731923 -1.197331, 0.57082367 -0.15058254 -1.5048616, 0.9162325 -0.8700842 -1.0082631, 1.6153953 -0.32218245 -0.7007325, 1.6254917 -0.35891348 -0.65824574, 0.92632896 -0.90681523 -0.9657763, 0.8972734 -1.338219 -0.13112278, 1.5964363 -0.7903173 0.17640775, "/>
+                      <Color  DEF="COL"  color="0.0 0.0 0.0, 1.0 1.0 0.0, 1.0 1.0 0.0, 0.0 0.0 1.0, 1.0 0.5 0.0, 0.0 1.0 0.0, 0.0 0.6 1.0, 0.8 0.8 0.8, 1.0 0.0 1.0, 0.8 0.8 0.8, 1.0 0.0 0.0, 0.8 0.8 0.8, 0.8 0.8 0.8, 0.0 0.0 0.0, 0.0 0.0 0.0, 0.0 0.6 0.0, 0.0 0.0 0.0, 0.8 0.8 0.8, 0.5 0.0 0.5, 0.8 0.8 0.8, 0.7 0.2 0.0, 0.8 0.8 0.8, 0.8 0.8 0.8, "/>
+                  </IndexedFaceSet>
+              </Shape>
+              <Transform >
+                  <Shape  DEF="EDGES" >
+                      <IndexedLineSet  colorPerVertex="false" coordIndex=" 4 6 -1 6 14 -1 14 18 -1 11 18 -1 4 11 -1 0 4 -1 0 1 -1 1 6 -1 1 8 -1 6 8 -1 8 16 -1 14 16 -1 16 24 -1 14 24 -1 24 27 -1 18 27 -1 26 27 -1 18 26 -1 19 26 -1 11 19 -1 9 19 -1 9 11 -1 2 9 -1 2 4 -1 0 2 -1 17 20 -1 17 25 -1 25 32 -1 28 32 -1 20 28 -1 20 21 -1 12 21 -1 5 12 -1 5 10 -1 10 20 -1 10 17 -1 3 5 -1 3 10 -1 3 7 -1 7 15 -1 15 17 -1 15 25 -1 7 13 -1 13 15 -1 13 23 -1 23 30 -1 25 30 -1 30 32 -1 23 31 -1 30 31 -1 31 33 -1 33 34 -1 32 34 -1 28 34 -1 29 33 -1 29 34 -1 22 29 -1 21 22 -1 21 28 -1 12 22 -1 26 31 -1 19 23 -1 9 13 -1 2 7 -1 0 3 -1 1 5 -1 8 12 -1 16 22 -1 24 29 -1 27 33 -1" colorIndex=" 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0">
+                          <Color  color="0.0 0.0 0.0 "/>
+                          <Coordinate  USE="C1"/>
+                      </IndexedLineSet>
+                  </Shape>
+              </Transform>
+          </Transform>
+          <Transform >
+              <Shape  DEF="SOLID" >
+                  <Appearance >
+                      <Material  DEF="MATER"  transparency="0.0" shininess="1.0" specularColor="1.0 1.0 1.0"/>
+                  </Appearance>
+                  <IndexedFaceSet  convex="false" colorIndex=" 5 4 3 4 3 4 3 4 3 4 3 5 5 3 3 5 3 3 5 3 3 5 3 3 5 3 3 4 4 4 4 4 4 4 4 4 4" coordIndex=" 4 6 14 18 11 -1 6 4 0 1 -1 6 1 8 -1 14 6 8 16 -1 14 16 24 -1 18 14 24 27 -1 18 27 26 -1 11 18 26 19 -1 11 19 9 -1 4 11 9 2 -1 4 2 0 -1 20 17 25 32 28 -1 20 21 12 5 10 -1 20 10 17 -1 10 5 3 -1 17 10 3 7 15 -1 17 15 25 -1 15 7 13 -1 25 15 13 23 30 -1 25 30 32 -1 30 23 31 -1 32 30 31 33 34 -1 32 34 28 -1 34 33 29 -1 28 34 29 22 21 -1 28 21 20 -1 21 22 12 -1 26 31 23 19 -1 19 23 13 9 -1 9 13 7 2 -1 2 7 3 0 -1 0 3 5 1 -1 1 5 12 8 -1 8 12 22 16 -1 16 22 29 24 -1 24 29 33 27 -1 27 33 31 26 -1" colorPerVertex="false" solid="false">
+                      <Coordinate  USE="C1"/>
+                      <Color  USE="COL"/>
+                  </IndexedFaceSet>
+              </Shape>
+              <Transform >
+                  <Shape  USE="EDGES"/>
+              </Transform>
+          </Transform>
+          <Group >
+              <Transform >
+                  <Shape  USE="SOLID"/>
+              </Transform>
+              <Transform >
+                  <Shape  USE="EDGES"/>
+              </Transform>
+              <Transform >
+                  <Shape  USE="FRAME"/>
+              </Transform>
+          </Group>
+      </Switch>
+  </Group>
+  <ProtoInstance name="Switcher" DEF="VIEWSWITCH">
+  </ProtoInstance>
+<ROUTE fromNode="SENSOR" fromField="isActive" toNode="VIEWSWITCH" toField="isActive"/>
+<ROUTE fromNode="VIEWSWITCH" fromField="switchvalue" toNode="POLY" toField="whichChoice"/>
+<ROUTE fromNode="VIEWSWITCH" fromField="switchvalue" toNode="CMDTXT" toField="whichChoice"/>
+<ROUTE fromNode="VIEWSWITCH" fromField="transp" toNode="MATER" toField="transparency"/>
+  </Scene>
+
+</X3D>

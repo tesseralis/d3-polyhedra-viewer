@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.0//EN"   "http://www.web3d.org/specifications/x3d-3.0.dtd">
+<X3D profile="Full">
+  <head>
+    <meta name="filename" content="johnson-x3d/j53.x3d"/>
+    <meta name="description" content="*enter description here, short-sentence summaries preferred*"/>
+    <meta name="author" content="*enter name of original author here*"/>
+    <meta name="translator" content="*if manually translating VRML-to-X3D, enter name of person translating here*"/>
+    <meta name="created" content="*enter date of initial version here*"/>
+    <meta name="translated" content="10 May 2015"/>
+    <meta name="revised"    content="10 May 2015"/>
+    <meta name="version" content="*enter version here*"/>
+    <meta name="reference" content="*enter reference citation or relative/online url here*"/>
+    <meta name="reference" content="*enter additional url/bibliographic reference information here*"/>
+    <meta name="copyright" content="*enter copyright information here* Example:  Copyright (c) Web3D Consortium Inc. 2002"/>
+    <meta name="drawing" content="*enter drawing filename/url here*"/>
+    <meta name="image" content="*enter image filename/url here*"/>
+    <meta name="movie" content="*enter movie filename/url here*"/>
+    <meta name="photo" content="*enter photo filename/url here*"/>
+    <meta name="keywords" content="*enter keywords here*"/>
+    <meta name="url" content="*enter online url address for this file here*"/>
+    <meta name="generator" content="Vrml97ToX3dNist, http://ovrt.nist.gov/v2_x3d.html"/>
+  </head>
+  <Scene>
+  <ProtoDeclare name="HUD">
+    <ProtoInterface>
+      <field  name="children" type="MFNode" accessType="initializeOnly">
+      </field>
+      <field  name="rotation" type="SFRotation" value="0.0 0.0 0.0  0.0" accessType="inputOutput"/>
+      <field  name="size" type="SFVec3f" value="3.4E38 3.4E38 3.4E38" accessType="inputOutput"/>
+      <field  name="translation" type="SFVec3f" value="0.0 0.0 -10.0" accessType="inputOutput"/>
+    </ProtoInterface>
+    <ProtoBody>
+          <Group >
+              <ProximitySensor  DEF="UserPosition"  center="0.0 0.0 0.0">
+                  <IS>
+                    <connect nodeField="size" protoField="size"/>
+                  </IS>
+              </ProximitySensor>
+              <Transform  DEF="HUD" >
+                  <Transform >
+                      <Transform >
+                          <IS>
+                            <connect nodeField="translation" protoField="translation"/>
+                            <connect nodeField="children" protoField="children"/>
+                            <connect nodeField="rotation" protoField="rotation"/>
+                          </IS>
+                      </Transform>
+                  </Transform>
+              </Transform>
+          </Group>
+<ROUTE fromNode="UserPosition" fromField="position_changed" toNode="HUD" toField="translation"/>
+<ROUTE fromNode="UserPosition" fromField="orientation_changed" toNode="HUD" toField="rotation"/>
+    </ProtoBody>
+  </ProtoDeclare>
+  <ProtoDeclare name="Switcher">
+    <ProtoInterface>
+      <field  name="transp" type="SFFloat" accessType="outputOnly"/>
+      <field  name="switchvalue" type="SFInt32" accessType="outputOnly"/>
+      <field  name="isActive" type="SFBool" accessType="inputOnly"/>
+    </ProtoInterface>
+    <ProtoBody>
+          <Script >
+            <field name="transp" type="SFFloat" accessType="outputOnly"/>
+            <field name="switchvalue" type="SFInt32" accessType="outputOnly"/>
+            <field name="isActive" type="SFBool" accessType="inputOnly"/>
+            <field name="first" type="SFBool" value="true" accessType="initializeOnly"/>
+            <IS>
+            <connect nodeField="transp" protoField="transp"/>
+            <connect nodeField="switchvalue" protoField="switchvalue"/>
+            <connect nodeField="isActive" protoField="isActive"/>
+            </IS>
+            <![CDATA[javascript:
+       function isActive(eventValue) {
+          if (eventValue == true) {
+            if (first == true) {
+              switchvalue = 1;
+              first = false;
+              }
+            if (switchvalue == 0) {
+              switchvalue = 1;
+              transp = 0;
+              }
+            else {
+              if (switchvalue == 1) {
+              switchvalue = 2;
+              transp = 0.70
+              }
+              else {
+                if (switchvalue ==2) {
+                switchvalue = 0;
+               transp = 0;
+                }
+            } } } }
+            ]]>
+          </Script>
+    </ProtoBody>
+  </ProtoDeclare>
+  <WorldInfo  info='"Author: Jim McNeill"' title="J53   Generation Date: 04-13-2003"/>
+  <Background  skyColor="0.0 0.0 0.0 "/>
+  <NavigationInfo  headlight="true" type='"EXAMINE"' avatarSize=" 0.0 0.0 0.0 0.0 0.0 0.0"/>
+  <Viewpoint  position="0.0 0.0 4.812" description="Wide Angle"/>
+  <Viewpoint  position="0.0 0.0 24.059" description="Telephoto" fieldOfView="0.15"/>
+  <Viewpoint  position="0.0 0.0 0.0" description="Origin"/>
+  <Viewpoint  position="0.0 0.0 0.0" description="Origin Wide Angle" fieldOfView="1.0"/>
+  <Viewpoint  position="0.0 0.0 0.0" description="Origin Fish-Eye" fieldOfView="1.57"/>
+  <ProtoInstance name="HUD">
+    <fieldValue name="children">
+      <Transform >
+          <TouchSensor  DEF="SENSOR" />
+          <Transform  DEF="POINT" >
+              <Shape >
+                  <Appearance >
+                      <Material  transparency="0.7" diffuseColor="0.502 0.502 0.502"/>
+                  </Appearance>
+                  <Box  size="0.2 0.05 0.001"/>
+              </Shape>
+          </Transform>
+          <Switch  DEF="CMDTXT"  whichChoice="1">
+              <Transform  translation="-0.15 -0.83 -2.0">
+                  <Shape >
+                      <Text  string='"--> solid"'>
+                          <FontStyle  family='"SANS"' size="0.08"/>
+                      </Text>
+                  </Shape>
+              </Transform>
+              <Transform  translation="-0.15 -0.83 -2.0">
+                  <Shape >
+                      <Text  string='"--> trans"'>
+                          <FontStyle  family='"SANS"' size="0.08"/>
+                      </Text>
+                  </Shape>
+              </Transform>
+              <Transform  translation="-0.15 -0.83 -2.0">
+                  <Shape >
+                      <Text  string='"--> frame"'>
+                          <FontStyle  family='"SANS"' size="0.08"/>
+                      </Text>
+                  </Shape>
+              </Transform>
+          </Switch>
+      </Transform>
+    </fieldValue>
+    <fieldValue name="translation" value="0.0 -0.82 -2.0"/>
+  </ProtoInstance>
+  <Group >
+      <Switch  DEF="POLY"  whichChoice="1">
+          <Transform >
+              <Shape  DEF="FRAME" >
+                  <Appearance >
+                      <Material  shininess="1.0" specularColor="1.0 1.0 1.0"/>
+                  </Appearance>
+                  <IndexedFaceSet  convex="false" colorIndex=" 5 5 5 5 5 5 5 5 5 5 4 4 4 4 4 4 4 4 4 4 4 4 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3" coordIndex=" 4 5 13 12 -1 5 2 14 13 -1 2 0 15 14 -1 0 1 16 15 -1 1 4 12 16 -1 8 7 18 17 -1 7 9 19 18 -1 9 11 20 19 -1 11 10 21 20 -1 10 8 17 21 -1 5 4 23 22 -1 4 10 24 23 -1 10 11 25 24 -1 11 5 22 25 -1 2 5 27 26 -1 5 11 28 27 -1 11 9 29 28 -1 9 2 26 29 -1 1 0 31 30 -1 0 7 32 31 -1 7 8 33 32 -1 8 1 30 33 -1 2 3 35 34 -1 3 0 36 35 -1 0 2 34 36 -1 2 9 38 37 -1 9 3 39 38 -1 3 2 37 39 -1 0 3 41 40 -1 3 7 42 41 -1 7 0 40 42 -1 7 3 44 43 -1 3 9 45 44 -1 9 7 43 45 -1 1 6 47 46 -1 6 4 48 47 -1 4 1 46 48 -1 1 8 50 49 -1 8 6 51 50 -1 6 1 49 51 -1 4 6 53 52 -1 6 10 54 53 -1 10 4 52 54 -1 10 6 56 55 -1 6 8 57 56 -1 8 10 55 57 -1" colorPerVertex="false" solid="false">
+                      <Coordinate  DEF="C1"  point="0.5789848 -0.409062 -0.68633205, -0.15597671 0.2156233 -0.9501498, 0.96746635 -0.08274579 0.17541029, 0.9021423 -1.0644162 -0.00363145, -0.22172637 0.92801625 -0.25145584, 0.47259963 0.743614 0.44417855, -1.048456 0.59350735 -0.70380753, -0.07755427 -0.96724033 -0.1789925, -0.8125158 -0.34255502 -0.44281027, 0.31092727 -0.6409241 0.6827498, -0.87826544 0.36983794 0.2558837, -0.18393946 0.1854357 0.9515181, -0.19775066 0.8997279 -0.25155234, 0.4663079 0.7233642 0.41375756, 0.93960214 -0.06697249 0.15670559, 0.5680555 -0.37906373 -0.6674712, -0.13486719 0.21838994 -0.9197885, -0.7914063 -0.33978838 -0.41244894, -0.08848359 -0.93724203 -0.16013165, 0.28306305 -0.6251508 0.6640451, -0.19023117 0.16518588 0.9210971, -0.8542897 0.34154955 0.2557872, 0.43207368 0.7324007 0.4385297, -0.22059277 0.90573883 -0.21536662, -0.8377395 0.38105124 0.26153255, -0.18507306 0.20771313 0.9154289, 0.9329242 -0.07470035 0.19869351, 0.46774945 0.70207787 0.4513357, -0.14939728 0.17739026 0.9282349, 0.31577745 -0.59938794 0.67559266, -0.15362404 0.1801374 -0.92701507, 0.5372398 -0.4070668 -0.67902637, -0.07990694 -0.9317544 -0.20212722, -0.7707708 -0.34455022 -0.45011592, 0.9517461 -0.12805578 0.13935646, 0.8932107 -1.0077081 -0.0210787, 0.6036367 -0.42046022 -0.632831, 0.9424603 -0.13608772 0.18678285, 0.35415074 -0.6362584 0.64139813, 0.8839249 -1.0157399 0.02634768, 0.56743616 -0.4511 -0.64510787, 0.8570101 -1.0383478 -0.03335557, -0.0208734 -0.9512707 -0.19049257, -0.03015919 -0.95930266 -0.14306618, 0.8477243 -1.0463798 0.01407081, 0.31795016 -0.66689825 0.62912124, -0.18917073 0.2533916 -0.9174128, -0.9889008 0.5920048 -0.6966711, -0.2480875 0.8917505 -0.29132923, -0.20963629 0.20937772 -0.9240415, -0.79794586 -0.290793 -0.46942624, -1.0093664 0.5479909 -0.7032998, -0.2731083 0.89709264 -0.249551, -1.0139216 0.5973469 -0.6548929, -0.86141783 0.39692193 0.20506427, -0.8818834 0.35290807 0.19843554, -1.0343871 0.55333304 -0.6615216, -0.82296664 -0.28545085 -0.427648, "/>
+                      <Color  DEF="COL"  color="0.0 0.0 0.0, 1.0 1.0 0.0, 1.0 1.0 0.0, 0.0 0.0 1.0, 1.0 0.5 0.0, 0.0 1.0 0.0, 0.0 0.6 1.0, 0.8 0.8 0.8, 1.0 0.0 1.0, 0.8 0.8 0.8, 1.0 0.0 0.0, 0.8 0.8 0.8, 0.8 0.8 0.8, 0.0 0.0 0.0, 0.0 0.0 0.0, 0.0 0.6 0.0, 0.0 0.0 0.0, 0.8 0.8 0.8, 0.5 0.0 0.5, 0.8 0.8 0.8, 0.7 0.2 0.0, 0.8 0.8 0.8, 0.8 0.8 0.8, "/>
+                  </IndexedFaceSet>
+              </Shape>
+              <Transform >
+                  <Shape  DEF="EDGES" >
+                      <IndexedLineSet  colorPerVertex="false" coordIndex=" 4 5 -1 2 5 -1 0 2 -1 0 1 -1 1 4 -1 7 8 -1 7 9 -1 9 11 -1 10 11 -1 8 10 -1 4 10 -1 5 11 -1 2 9 -1 0 7 -1 1 8 -1 2 3 -1 0 3 -1 3 9 -1 3 7 -1 1 6 -1 4 6 -1 6 8 -1 6 10 -1" colorIndex=" 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0">
+                          <Color  color="0.0 0.0 0.0 "/>
+                          <Coordinate  USE="C1"/>
+                      </IndexedLineSet>
+                  </Shape>
+              </Transform>
+          </Transform>
+          <Transform >
+              <Shape  DEF="SOLID" >
+                  <Appearance >
+                      <Material  DEF="MATER"  transparency="0.0" shininess="1.0" specularColor="1.0 1.0 1.0"/>
+                  </Appearance>
+                  <IndexedFaceSet  convex="false" colorIndex=" 5 5 4 4 4 3 3 3 3 3 3 3 3" coordIndex=" 4 5 2 0 1 -1 8 7 9 11 10 -1 5 4 10 11 -1 2 5 11 9 -1 1 0 7 8 -1 2 3 0 -1 2 9 3 -1 0 3 7 -1 7 3 9 -1 1 6 4 -1 1 8 6 -1 4 6 10 -1 10 6 8 -1" colorPerVertex="false" solid="false">
+                      <Coordinate  USE="C1"/>
+                      <Color  USE="COL"/>
+                  </IndexedFaceSet>
+              </Shape>
+              <Transform >
+                  <Shape  USE="EDGES"/>
+              </Transform>
+          </Transform>
+          <Group >
+              <Transform >
+                  <Shape  USE="SOLID"/>
+              </Transform>
+              <Transform >
+                  <Shape  USE="EDGES"/>
+              </Transform>
+              <Transform >
+                  <Shape  USE="FRAME"/>
+              </Transform>
+          </Group>
+      </Switch>
+  </Group>
+  <ProtoInstance name="Switcher" DEF="VIEWSWITCH">
+  </ProtoInstance>
+<ROUTE fromNode="SENSOR" fromField="isActive" toNode="VIEWSWITCH" toField="isActive"/>
+<ROUTE fromNode="VIEWSWITCH" fromField="switchvalue" toNode="POLY" toField="whichChoice"/>
+<ROUTE fromNode="VIEWSWITCH" fromField="switchvalue" toNode="CMDTXT" toField="whichChoice"/>
+<ROUTE fromNode="VIEWSWITCH" fromField="transp" toNode="MATER" toField="transparency"/>
+  </Scene>
+
+</X3D>

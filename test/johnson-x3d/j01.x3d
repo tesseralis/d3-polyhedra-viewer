@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.0//EN"   "http://www.web3d.org/specifications/x3d-3.0.dtd">
+<X3D profile="Full">
+  <head>
+    <meta name="filename" content="johnson-x3d/j01.x3d"/>
+    <meta name="description" content="*enter description here, short-sentence summaries preferred*"/>
+    <meta name="author" content="*enter name of original author here*"/>
+    <meta name="translator" content="*if manually translating VRML-to-X3D, enter name of person translating here*"/>
+    <meta name="created" content="*enter date of initial version here*"/>
+    <meta name="translated" content="10 May 2015"/>
+    <meta name="revised"    content="10 May 2015"/>
+    <meta name="version" content="*enter version here*"/>
+    <meta name="reference" content="*enter reference citation or relative/online url here*"/>
+    <meta name="reference" content="*enter additional url/bibliographic reference information here*"/>
+    <meta name="copyright" content="*enter copyright information here* Example:  Copyright (c) Web3D Consortium Inc. 2002"/>
+    <meta name="drawing" content="*enter drawing filename/url here*"/>
+    <meta name="image" content="*enter image filename/url here*"/>
+    <meta name="movie" content="*enter movie filename/url here*"/>
+    <meta name="photo" content="*enter photo filename/url here*"/>
+    <meta name="keywords" content="*enter keywords here*"/>
+    <meta name="url" content="*enter online url address for this file here*"/>
+    <meta name="generator" content="Vrml97ToX3dNist, http://ovrt.nist.gov/v2_x3d.html"/>
+  </head>
+  <Scene>
+  <WorldInfo  info='"Author: Jim McNeill"' title="J01   Generation Date: 04-04-2003"/>
+  <Background  skyColor="0.0 0.0 0.0 "/>
+  <NavigationInfo  headlight="true" type='"EXAMINE"' avatarSize=" 0.0 0.0 0.0 0.0 0.0 0.0"/>
+  <Viewpoint  position="0.0 0.0 2.524" description="Wide Angle"/>
+  <Viewpoint  position="0.0 0.0 12.619" description="Telephoto" fieldOfView="0.15"/>
+  <Viewpoint  position="0.0 0.0 0.0" description="Origin"/>
+  <Viewpoint  position="0.0 0.0 0.0" description="Origin Wide Angle" fieldOfView="1.0"/>
+  <Viewpoint  position="0.0 0.0 0.0" description="Origin Fish-Eye" fieldOfView="1.57"/>
+  <Transform >
+      <Shape >
+          <Appearance >
+              <Material  shininess="1.0" specularColor="1.0 1.0 1.0"/>
+          </Appearance>
+          <IndexedFaceSet  convex="false" colorIndex=" 4 3 3 3 3" coordIndex=" 4 1 0 3 -1 1 4 2 -1 0 1 2 -1 3 0 2 -1 4 3 2 -1" colorPerVertex="false" solid="false">
+              <Coordinate  DEF="C1"  point="-0.09494157 0.2164355 0.6812795, -0.71494657 -0.08324915 -0.0438294, 0.16945964 -0.5343371 0.0759428, 0.6302167 0.3504177 0.005858, 0.01021175 0.05073305 -0.7192509, "/>
+              <Color  DEF="COL"  color="0.0 0.0 0.0, 1.0 1.0 0.0, 1.0 1.0 0.0, 0.0 0.0 1.0, 1.0 0.5 0.0, 0.0 1.0 0.0, 0.0 0.6 1.0, 0.8 0.8 0.8, 1.0 0.0 1.0, 0.8 0.8 0.8, 1.0 0.0 0.0, 0.8 0.8 0.8, 0.8 0.8 0.8, 0.0 0.0 0.0, 0.0 0.0 0.0, 0.0 0.6 0.0, 0.0 0.0 0.0, 0.8 0.8 0.8, 0.5 0.0 0.5, 0.8 0.8 0.8, 0.7 0.2 0.0, 0.8 0.8 0.8, 0.8 0.8 0.8, "/>
+          </IndexedFaceSet>
+      </Shape>
+      <Transform >
+          <Shape  DEF="EDGES" >
+              <IndexedLineSet  colorPerVertex="false" coordIndex=" 1 4 -1 0 1 -1 0 3 -1 3 4 -1 2 4 -1 1 2 -1 0 2 -1 2 3 -1" colorIndex=" 0 0 0 0 0 0 0 0">
+                  <Color  color="0.0 0.0 0.0 "/>
+                  <Coordinate  USE="C1"/>
+              </IndexedLineSet>
+          </Shape>
+      </Transform>
+  </Transform>
+  </Scene>
+
+</X3D>
