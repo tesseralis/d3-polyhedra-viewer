@@ -20,23 +20,23 @@
     <script src="build/JSXTransformer.js"></script>
     -->
     <script type='text/javascript' src='http://www.x3dom.org/download/x3dom.js'> </script> 
-                <link rel='stylesheet' type='text/css' href='http://www.x3dom.org/download/x3dom.css'></link> 
+    <link rel='stylesheet' type='text/css' href='http://www.x3dom.org/download/x3dom.css'></link> 
 
     <!-- Lodash -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/3.8.0/lodash.min.js"></script>
   </head>
   <body>
-    <div class="container-fluid">
-      <div class="panel">
-        <form>
+    <nav class="navbar navbar-default navbar-fixed-top" style="opacity:0.75">
+      <div class="container" style='position:absolute; left:0px; top:0px'>
+        <form class="navbar-form">
           <div class="form-group">
             <label for="jn">Johnson number</label>
             <input type="number" id="jn" value="1" placeholder="Enter Johnson number">
           </div>
         </form>
       </div>
-    </div>
-    <x3d width='500px' height='500px'> 
+    </nav>
+    <x3d style='width:100%; height:100%; border:0; margin:0; padding:0;'> 
       <param name="disableDoubleClick" value="true"></param>
       <scene>
         <inline id="solid" url="/test/johnson-x3d/j01.x3d"> </inline> 
@@ -44,17 +44,12 @@
     </x3d>           
     <script>
       $('#jn').change(function() {
-        //console.log($('#jn').val());
         var value = $("#jn").val();
         if (value.length === 1) {
           value = "0" + value;
         }
         $("#solid").attr("url", "/test/johnson-x3d/j"+value+".x3d");
       }).change();
-      //setTimeout(function() {
-      //  console.log("setting url");
-      //  $("#deer").attr("url", "Deer2.x3d");
-      //}, 2000);
     </script>
         
 
