@@ -119,7 +119,7 @@
       render(mock);
 
       // Get the rest of the polyhedron data
-      $.getJSON('/data/johnson.json', function(data) {
+      $.getJSON('data/johnson.json', function(data) {
         var changeSolid = function(n) {
           if (n >= 1 && n <= 92) {
             var solid = data[n-1];
