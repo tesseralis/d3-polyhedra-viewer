@@ -21,9 +21,6 @@
     <script type='text/javascript' src='http://www.x3dom.org/download/x3dom.js'> </script> 
     <link rel='stylesheet' type='text/css' href='http://www.x3dom.org/download/x3dom.css'></link> 
 
-    <!-- Lodash -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/3.8.0/lodash.min.js"></script>
-
     <!-- D3 -->
     <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 
@@ -54,10 +51,16 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title">About this Viewer</h4>
+            <h4 class="modal-title">About this Demo</h4>
           </div>
           <div class="modal-body">
-            TODO
+            <p>This demo allows you to manipulate virtual models of the 92 <a href="http://en.wikipedia.org/wiki/Johnson_solid">Johnson solids</a>.</p>
+            <p>It was built with
+            <a href="http://www.x3dom.org/">X3DOM</a>,
+            <a href="http://d3js.org/">d3.js</a>, and
+            <a href="http://getbootstrap.com/">Bootstrap</a>.
+            </p>
+            <p>Geometric data taken from George W. Hart's <a href="http://www.georgehart.com/virtual-polyhedra/johnson-index.html">Virtual Polyhedra</a>.
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -130,7 +133,7 @@
 
         var color = faces.select("color").datum(solid);
         color.attr("color", function(d) {
-          return joinListOfLists(', ', ' ', _.map(d.faces, function(face) {
+          return joinListOfLists(', ', ' ', d.faces.map(function(face) {
             return getColor(face.length);
           }));
         });
@@ -158,15 +161,14 @@
 
       // Get the color for a polygon with n sides
       function getColor(n) {
-        var map 
         var category10 = d3.scale.category10().domain([3,4,5,6,8,10]);
         var rgb = d3.rgb(category10(n));
-        return _.map([rgb.r, rgb.g, rgb.b], function(d) { return d / 255; });
+        return [rgb.r, rgb.g, rgb.b].map(function(d) { return d / 255; });
       }
 
       // Join a list of lists with the given inner and outer separators
       function joinListOfLists(outerSep, innerSep, list) {
-        return _.map(list, function(elem) {
+        return list.map(function(elem) {
           return elem.join(innerSep);
         }).join(outerSep);
       }
