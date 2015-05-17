@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" style='width:100%; height:100%; border:0; margin:0; padding:0;'>
   <head>
+    <!-- JQuery -->
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
     <!-- Boostrap -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -9,10 +12,10 @@
 
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
-    <!-- End Boostrap -->
 
-    <!-- JQuery -->
-    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <!-- End Boostrap -->
 
     <!-- X3DOM -->
     <script type='text/javascript' src='http://www.x3dom.org/download/x3dom.js'> </script> 
@@ -41,8 +44,29 @@
           </div>
           <input id="solid-name" class="form-control" type="text" value="square pyramid" placeholder="Solid name here..." readonly>
         </form>
+        <!-- Button trigger modal -->
+        <button type="button" class="pull-right btn btn-info navbar-btn" data-toggle="modal" data-target="#info">Info</button>
       </div>
     </nav>
+
+    <!-- App information -->
+    <div class="modal fade" id="info" tabindex="-1" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">About this Viewer</h4>
+          </div>
+          <div class="modal-body">
+            TODO
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- X3D viewer -->
     <x3d style='width:100%; height:100%; border:0; margin:0; padding:0;'> 
       <scene>
         <viewpoint position="0,0,5"></viewpoint>
