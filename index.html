@@ -37,15 +37,14 @@
       </div>
     </nav>
     <x3d style='width:100%; height:100%; border:0; margin:0; padding:0;'> 
-      <param name="disableDoubleClick" value="true"></param>
       <scene>
         <shape>
           <appearance>
-            <material diffuseColor="1,0,0" />
+            <material></material>
           </appearance>
-          <indexedfaceset >
-            <coordinate>
-            </coordinate>
+          <indexedfaceset colorPerVertex="false">
+            <coordinate></coordinate>
+            <color></color>
           </indexedfaceset>
         </shape>
 
@@ -57,27 +56,47 @@
       </scene> 
     </x3d>           
     <script>
-      var data;
-      $('#jn').change(function() {
-        var value = $("#jn").val();
-        if (data) {
-          render(value);
-        }
-      }).change();
+      // x3dom will bug out and won't process the solid data if
+      // it's not seeded.
+      var mock = {
+        "edges": [[4, 1], [1, 0], [0, 3], [3, 4], 
+                  [4, 2], [2, 1], [2, 0], [2, 3]], 
+        "vertices": [
+          [-0.729665, 0.670121, 0.319155], 
+          [-0.655235, -0.29213, -0.754096], 
+          [-0.093922, -0.607123, 0.537818], 
+          [0.702196, 0.595691, 0.485187], 
+          [0.776626, -0.36656, -0.588064]], 
+        "faces": [[1, 4, 2], [0, 1, 2], [3, 0, 2], [4, 3, 2], [4, 1, 0, 3]]
+      };
+      render(mock);
 
-      d3.json('data/johnson-clean.json', function(error, _data) {
-        data = _data;
-        render(1);
-      });
+      // Get the rest of the polyhedron data
+      $.getJSON('/data/johnson-clean.json', function(data) {
+        $('#jn').change(function() {
+          var value = parseInt($("#jn").val());
+          render(data[value-1]);
+        }).change();
+      });        
 
-      function render(i) {
-        var solid = data[i-1];
+      // Render the given polyhedron given its geometric data
+      function render(solid) {
         var faces = d3.select("IndexedFaceSet").datum(solid);
+
         renderVertices(faces);
+
+        var color = faces.select("color").datum(solid);
+        color.attr("color", function(d) {
+          return joinListOfLists(', ', ' ', _.map(d.faces, function(face) {
+            return getColor(face.length);
+          }));
+        });
+
         faces.attr("coordIndex", function(d) {
           return joinListOfLists(' -1 ', ' ', d.faces);
         });
 
+        // Render the edges (outlines)
         var edges = d3.select("IndexedLineSet").datum(solid);
         edges.attr("coordIndex", function(d) {
           return joinListOfLists(' -1 ', ' ', d.edges);
@@ -85,14 +104,24 @@
         renderVertices(edges);
       }
 
+      // Render the vertices of a face or edge set
       function renderVertices(elem) {
         elem.select('Coordinate').datum(function(d) {
           return d.vertices; 
-        }).attr('point', function(d) {
-          return joinListOfLists(', ', ' ', d);
+        }).attr('point', function(vertices) {
+          return joinListOfLists(', ', ' ', vertices);
         });
       }
 
+      // Get the color for a polygon with n sides
+      function getColor(n) {
+        var map 
+        var category10 = d3.scale.category10().domain([3,4,5,6,8,10]);
+        var rgb = d3.rgb(category10(n));
+        return _.map([rgb.r, rgb.g, rgb.b], function(d) { return d / 255; });
+      }
+
+      // Join a list of lists with the given inner and outer separators
       function joinListOfLists(outerSep, innerSep, list) {
         return _.map(list, function(elem) {
           return elem.join(innerSep);
