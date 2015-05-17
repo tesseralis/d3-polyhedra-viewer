@@ -28,10 +28,13 @@
   <body style='width:100%; height:100%; border:0; margin:0; padding:0;'>
     <nav class="navbar navbar-default navbar-fixed-top" style="position:absolute; left:0px; top:0px; opacity:0.75">
       <div class="container">
-        <form class="navbar-form">
+        <form class="form-inline navbar-form">
           <div class="form-group">
-            <label for="jn">Johnson number</label>
-            <input type="number" id="jn" value="1" placeholder="Enter Johnson number">
+            <label class="sr-only" for="jn">Johnson number</label>
+            <div class="input-group">
+              <div class="input-group-addon">J</div>
+              <input class="form-control" type="number" id="jn" value="1" min="1" max="92" placeholder="Enter Johnson number">
+            </div>
           </div>
         </form>
       </div>
