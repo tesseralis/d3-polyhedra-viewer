@@ -60,6 +60,12 @@
     <script>
       // Disable double-clicking to change rotation point
       x3dom.Viewarea.prototype.onDoubleClick = function() {}
+
+      // Make sure the submit doesn't refresh the page
+      $("form").submit(function(event) {
+        event.preventDefault();
+      });
+
       // x3dom will bug out and won't process the solid data if
       // it's not seeded.
       var mock = {
