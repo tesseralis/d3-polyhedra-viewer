@@ -113,7 +113,7 @@
       render(mock);
 
       // Get the rest of the polyhedron data
-      $.getJSON('/data/johnson-clean.json', function(data) {
+      $.getJSON('/data/johnson.json', function(data) {
         $('#jn').change(function() {
           var value = parseInt($("#jn").val());
           var solid = data[value-1];

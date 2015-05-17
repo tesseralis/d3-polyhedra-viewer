@@ -1,0 +1,988 @@
+{
+  "polyhedra": [
+    {
+      "edges": 8,
+      "faces": {
+        "3": 4,
+        "4": 1
+      },
+      "name": "square pyramid",
+      "type": "johnson",
+      "vertices": 5
+    },
+    {
+      "edges": 10,
+      "faces": {
+        "3": 5,
+        "5": 1
+      },
+      "name": "pentagonal pyramid",
+      "type": "johnson",
+      "vertices": 6
+    },
+    {
+      "edges": 15,
+      "faces": {
+        "3": 4,
+        "4": 3,
+        "6": 1
+      },
+      "name": "triangular cupola",
+      "type": "johnson",
+      "vertices": 9
+    },
+    {
+      "edges": 20,
+      "faces": {
+        "3": 4,
+        "4": 5,
+        "8": 1
+      },
+      "name": "square cupola",
+      "type": "johnson",
+      "vertices": 12
+    },
+    {
+      "edges": 25,
+      "faces": {
+        "3": 5,
+        "4": 5,
+        "5": 1,
+        "10": 1
+      },
+      "name": "pentagonal cupola",
+      "type": "johnson",
+      "vertices": 15
+    },
+    {
+      "edges": 35,
+      "faces": {
+        "3": 10,
+        "5": 6,
+        "10": 1
+      },
+      "name": "pentagonal rotunda",
+      "type": "johnson",
+      "vertices": 20
+    },
+    {
+      "edges": 12,
+      "faces": {
+        "3": 4,
+        "4": 3
+      },
+      "name": "elongated triangular pyramid",
+      "type": "johnson",
+      "vertices": 7
+    },
+    {
+      "edges": 16,
+      "faces": {
+        "3": 4,
+        "4": 5
+      },
+      "name": "elongated square pyramid",
+      "type": "johnson",
+      "vertices": 9
+    },
+    {
+      "edges": 20,
+      "faces": {
+        "3": 5,
+        "4": 5,
+        "5": 1
+      },
+      "name": "elongated pentagonal pyramid",
+      "type": "johnson",
+      "vertices": 11
+    },
+    {
+      "edges": 20,
+      "faces": {
+        "3": 12,
+        "4": 1
+      },
+      "name": "gyroelongated square pyramid",
+      "type": "johnson",
+      "vertices": 9
+    },
+    {
+      "edges": 25,
+      "faces": {
+        "3": 15,
+        "5": 1
+      },
+      "name": "gyroelongated pentagonal pyramid",
+      "type": "johnson",
+      "vertices": 11
+    },
+    {
+      "edges": 9,
+      "faces": {
+        "3": 6
+      },
+      "name": "triangular bipyramid",
+      "type": "johnson",
+      "vertices": 5
+    },
+    {
+      "edges": 15,
+      "faces": {
+        "3": 10
+      },
+      "name": "pentagonal bipyramid",
+      "type": "johnson",
+      "vertices": 7
+    },
+    {
+      "edges": 15,
+      "faces": {
+        "3": 6,
+        "4": 3
+      },
+      "name": "elongated triangular bipyramid",
+      "type": "johnson",
+      "vertices": 8
+    },
+    {
+      "edges": 20,
+      "faces": {
+        "3": 8,
+        "4": 4
+      },
+      "name": "elongated square bipyramid",
+      "type": "johnson",
+      "vertices": 10
+    },
+    {
+      "edges": 25,
+      "faces": {
+        "3": 10,
+        "4": 5
+      },
+      "name": "elongated pentagonal bipyramid",
+      "type": "johnson",
+      "vertices": 12
+    },
+    {
+      "edges": 24,
+      "faces": {
+        "3": 16
+      },
+      "name": "gyroelongated square bipyramid",
+      "type": "johnson",
+      "vertices": 10
+    },
+    {
+      "edges": 27,
+      "faces": {
+        "3": 4,
+        "4": 9,
+        "6": 1
+      },
+      "name": "elongated triangular cupola",
+      "type": "johnson",
+      "vertices": 15
+    },
+    {
+      "edges": 36,
+      "faces": {
+        "3": 4,
+        "4": 13,
+        "8": 1
+      },
+      "name": "elongated square cupola",
+      "type": "johnson",
+      "vertices": 20
+    },
+    {
+      "edges": 45,
+      "faces": {
+        "3": 5,
+        "4": 15,
+        "5": 1,
+        "10": 1
+      },
+      "name": "elongated pentagonal cupola",
+      "type": "johnson",
+      "vertices": 25
+    },
+    {
+      "edges": 55,
+      "faces": {
+        "3": 10,
+        "4": 10,
+        "5": 6,
+        "10": 1
+      },
+      "name": "elongated pentagonal rotunda",
+      "type": "johnson",
+      "vertices": 30
+    },
+    {
+      "edges": 33,
+      "faces": {
+        "3": 16,
+        "4": 3,
+        "6": 1
+      },
+      "name": "gyroelongated triangular cupola",
+      "type": "johnson",
+      "vertices": 15
+    },
+    {
+      "edges": 44,
+      "faces": {
+        "3": 20,
+        "4": 5,
+        "8": 1
+      },
+      "name": "gyroelongated square cupola",
+      "type": "johnson",
+      "vertices": 20
+    },
+    {
+      "edges": 55,
+      "faces": {
+        "3": 25,
+        "4": 5,
+        "5": 1,
+        "10": 1
+      },
+      "name": "gyroelongated pentagonal cupola",
+      "type": "johnson",
+      "vertices": 25
+    },
+    {
+      "edges": 65,
+      "faces": {
+        "3": 30,
+        "5": 6,
+        "10": 1
+      },
+      "name": "gyroelongated pentagonal rotunda",
+      "type": "johnson",
+      "vertices": 30
+    },
+    {
+      "edges": 14,
+      "faces": {
+        "3": 4,
+        "4": 4
+      },
+      "name": "gyrobifastigium",
+      "type": "johnson",
+      "vertices": 8
+    },
+    {
+      "edges": 24,
+      "faces": {
+        "3": 8,
+        "4": 6
+      },
+      "name": "triangular orthobicupola",
+      "type": "johnson",
+      "vertices": 12
+    },
+    {
+      "edges": 32,
+      "faces": {
+        "3": 8,
+        "4": 10
+      },
+      "name": "square orthobicupola",
+      "type": "johnson",
+      "vertices": 16
+    },
+    {
+      "edges": 32,
+      "faces": {
+        "3": 8,
+        "4": 10
+      },
+      "name": "square gyrobicupola",
+      "type": "johnson",
+      "vertices": 16
+    },
+    {
+      "edges": 40,
+      "faces": {
+        "3": 10,
+        "4": 10,
+        "5": 2
+      },
+      "name": "pentagonal orthobicupola",
+      "type": "johnson",
+      "vertices": 20
+    },
+    {
+      "edges": 40,
+      "faces": {
+        "3": 10,
+        "4": 10,
+        "5": 2
+      },
+      "name": "pentagonal gyrobicupola",
+      "type": "johnson",
+      "vertices": 20
+    },
+    {
+      "edges": 50,
+      "faces": {
+        "3": 15,
+        "4": 5,
+        "5": 7
+      },
+      "name": "pentagonal orthocupolarotunda",
+      "type": "johnson",
+      "vertices": 25
+    },
+    {
+      "edges": 50,
+      "faces": {
+        "3": 15,
+        "4": 5,
+        "5": 7
+      },
+      "name": "pentagonal gyrocupolarotunda",
+      "type": "johnson",
+      "vertices": 25
+    },
+    {
+      "edges": 60,
+      "faces": {
+        "3": 20,
+        "5": 12
+      },
+      "name": "pentagonal orthobirotunda",
+      "type": "johnson",
+      "vertices": 30
+    },
+    {
+      "edges": 36,
+      "faces": {
+        "3": 8,
+        "4": 12
+      },
+      "name": "elongated triangular orthobicupola",
+      "type": "johnson",
+      "vertices": 18
+    },
+    {
+      "edges": 36,
+      "faces": {
+        "3": 8,
+        "4": 12
+      },
+      "name": "elongated triangular gyrobicupola",
+      "type": "johnson",
+      "vertices": 18
+    },
+    {
+      "edges": 48,
+      "faces": {
+        "3": 8,
+        "4": 18
+      },
+      "name": "elongated square gyrobicupola",
+      "type": "johnson",
+      "vertices": 24
+    },
+    {
+      "edges": 60,
+      "faces": {
+        "3": 10,
+        "4": 20,
+        "5": 2
+      },
+      "name": "elongated pentagonal orthobicupola",
+      "type": "johnson",
+      "vertices": 30
+    },
+    {
+      "edges": 60,
+      "faces": {
+        "3": 10,
+        "4": 20,
+        "5": 2
+      },
+      "name": "elongated pentagonal gyrobicupola",
+      "type": "johnson",
+      "vertices": 30
+    },
+    {
+      "edges": 70,
+      "faces": {
+        "3": 15,
+        "4": 15,
+        "5": 7
+      },
+      "name": "elongated pentagonal orthocupolarotunda",
+      "type": "johnson",
+      "vertices": 35
+    },
+    {
+      "edges": 70,
+      "faces": {
+        "3": 15,
+        "4": 15,
+        "5": 7
+      },
+      "name": "elongated pentagonal gyrocupolarotunda",
+      "type": "johnson",
+      "vertices": 35
+    },
+    {
+      "edges": 80,
+      "faces": {
+        "3": 20,
+        "4": 10,
+        "5": 12
+      },
+      "name": "elongated pentagonal orthobirotunda",
+      "type": "johnson",
+      "vertices": 40
+    },
+    {
+      "edges": 80,
+      "faces": {
+        "3": 20,
+        "4": 10,
+        "5": 12
+      },
+      "name": "elongated pentagonal gyrobirotunda",
+      "type": "johnson",
+      "vertices": 40
+    },
+    {
+      "edges": 42,
+      "faces": {
+        "3": 20,
+        "4": 6
+      },
+      "name": "gyroelongated triangular bicupola",
+      "type": "johnson",
+      "vertices": 18
+    },
+    {
+      "edges": 56,
+      "faces": {
+        "3": 24,
+        "4": 10
+      },
+      "name": "gyroelongated square bicupola",
+      "type": "johnson",
+      "vertices": 24
+    },
+    {
+      "edges": 70,
+      "faces": {
+        "3": 30,
+        "4": 10,
+        "5": 2
+      },
+      "name": "gyroelongated pentagonal bicupola",
+      "type": "johnson",
+      "vertices": 30
+    },
+    {
+      "edges": 80,
+      "faces": {
+        "3": 35,
+        "4": 5,
+        "5": 7
+      },
+      "name": "gyroelongated pentagonal cupolarotunda",
+      "type": "johnson",
+      "vertices": 35
+    },
+    {
+      "edges": 90,
+      "faces": {
+        "3": 40,
+        "5": 12
+      },
+      "name": "gyroelongated pentagonal birotunda",
+      "type": "johnson",
+      "vertices": 40
+    },
+    {
+      "edges": 13,
+      "faces": {
+        "3": 6,
+        "4": 2
+      },
+      "name": "augmented triangular prism",
+      "type": "johnson",
+      "vertices": 7
+    },
+    {
+      "edges": 17,
+      "faces": {
+        "3": 10,
+        "4": 1
+      },
+      "name": "biaugmented triangular prism",
+      "type": "johnson",
+      "vertices": 8
+    },
+    {
+      "edges": 21,
+      "faces": {
+        "3": 14
+      },
+      "name": "triaugmented triangular prism",
+      "type": "johnson",
+      "vertices": 9
+    },
+    {
+      "edges": 19,
+      "faces": {
+        "3": 4,
+        "4": 4,
+        "5": 2
+      },
+      "name": "augmented pentagonal prism",
+      "type": "johnson",
+      "vertices": 11
+    },
+    {
+      "edges": 23,
+      "faces": {
+        "3": 8,
+        "4": 3,
+        "5": 2
+      },
+      "name": "biaugmented pentagonal prism",
+      "type": "johnson",
+      "vertices": 12
+    },
+    {
+      "edges": 22,
+      "faces": {
+        "3": 4,
+        "4": 5,
+        "6": 2
+      },
+      "name": "augmented hexagonal prism",
+      "type": "johnson",
+      "vertices": 13
+    },
+    {
+      "edges": 26,
+      "faces": {
+        "3": 8,
+        "4": 4,
+        "6": 2
+      },
+      "name": "parabiaugmented hexagonal prism",
+      "type": "johnson",
+      "vertices": 14
+    },
+    {
+      "edges": 26,
+      "faces": {
+        "3": 8,
+        "4": 4,
+        "6": 2
+      },
+      "name": "metabiaugmented hexagonal prism",
+      "type": "johnson",
+      "vertices": 14
+    },
+    {
+      "edges": 30,
+      "faces": {
+        "3": 12,
+        "4": 3,
+        "6": 2
+      },
+      "name": "triaugmented hexagonal prism",
+      "type": "johnson",
+      "vertices": 15
+    },
+    {
+      "edges": 35,
+      "faces": {
+        "3": 5,
+        "5": 11
+      },
+      "name": "augmented dodecahedron",
+      "type": "johnson",
+      "vertices": 21
+    },
+    {
+      "edges": 40,
+      "faces": {
+        "3": 10,
+        "5": 10
+      },
+      "name": "parabiaugmented dodecahedron",
+      "type": "johnson",
+      "vertices": 22
+    },
+    {
+      "edges": 40,
+      "faces": {
+        "3": 10,
+        "5": 10
+      },
+      "name": "metabiaugmented dodecahedron",
+      "type": "johnson",
+      "vertices": 22
+    },
+    {
+      "edges": 45,
+      "faces": {
+        "3": 15,
+        "5": 9
+      },
+      "name": "triaugmented dodecahedron",
+      "type": "johnson",
+      "vertices": 23
+    },
+    {
+      "edges": 20,
+      "faces": {
+        "3": 10,
+        "5": 2
+      },
+      "name": "metabidiminished icosahedron",
+      "type": "johnson",
+      "vertices": 10
+    },
+    {
+      "edges": 15,
+      "faces": {
+        "3": 5,
+        "5": 3
+      },
+      "name": "tridiminished icosahedron",
+      "type": "johnson",
+      "vertices": 9
+    },
+    {
+      "edges": 18,
+      "faces": {
+        "3": 7,
+        "5": 3
+      },
+      "name": "augmented tridiminished icosahedron",
+      "type": "johnson",
+      "vertices": 10
+    },
+    {
+      "edges": 27,
+      "faces": {
+        "3": 8,
+        "4": 3,
+        "6": 3
+      },
+      "name": "augmented truncated tetrahedron",
+      "type": "johnson",
+      "vertices": 15
+    },
+    {
+      "edges": 48,
+      "faces": {
+        "3": 12,
+        "4": 5,
+        "8": 5
+      },
+      "name": "augmented truncated cube",
+      "type": "johnson",
+      "vertices": 28
+    },
+    {
+      "edges": 60,
+      "faces": {
+        "3": 16,
+        "4": 10,
+        "8": 4
+      },
+      "name": "biaugmented truncated cube",
+      "type": "johnson",
+      "vertices": 32
+    },
+    {
+      "edges": 105,
+      "faces": {
+        "3": 25,
+        "4": 5,
+        "5": 1,
+        "10": 11
+      },
+      "name": "augmented truncated dodecahedron",
+      "type": "johnson",
+      "vertices": 65
+    },
+    {
+      "edges": 120,
+      "faces": {
+        "3": 30,
+        "4": 10,
+        "5": 2,
+        "10": 10
+      },
+      "name": "parabiaugmented truncated dodecahedron",
+      "type": "johnson",
+      "vertices": 70
+    },
+    {
+      "edges": 120,
+      "faces": {
+        "3": 30,
+        "4": 10,
+        "5": 2,
+        "10": 10
+      },
+      "name": "metabiaugmented truncated dodecahedron",
+      "type": "johnson",
+      "vertices": 70
+    },
+    {
+      "edges": 135,
+      "faces": {
+        "3": 35,
+        "4": 15,
+        "5": 3,
+        "10": 9
+      },
+      "name": "triaugmented truncated dodecahedron",
+      "type": "johnson",
+      "vertices": 75
+    },
+    {
+      "edges": 120,
+      "faces": {
+        "3": 20,
+        "4": 30,
+        "5": 12
+      },
+      "name": "gyrate rhombicosidodecahedron",
+      "type": "johnson",
+      "vertices": 60
+    },
+    {
+      "edges": 120,
+      "faces": {
+        "3": 20,
+        "4": 30,
+        "5": 12
+      },
+      "name": "parabigyrate rhombicosidodecahedron",
+      "type": "johnson",
+      "vertices": 60
+    },
+    {
+      "edges": 120,
+      "faces": {
+        "3": 20,
+        "4": 30,
+        "5": 12
+      },
+      "name": "metabigyrate rhombicosidodecahedron",
+      "type": "johnson",
+      "vertices": 60
+    },
+    {
+      "edges": 120,
+      "faces": {
+        "3": 20,
+        "4": 30,
+        "5": 12
+      },
+      "name": "trigyrate rhombicosidodecahedron",
+      "type": "johnson",
+      "vertices": 60
+    },
+    {
+      "edges": 105,
+      "faces": {
+        "3": 15,
+        "4": 25,
+        "5": 11,
+        "10": 1
+      },
+      "name": "diminished rhombicosidodecahedron",
+      "type": "johnson",
+      "vertices": 55
+    },
+    {
+      "edges": 105,
+      "faces": {
+        "3": 15,
+        "4": 25,
+        "5": 11,
+        "10": 1
+      },
+      "name": "paragyrate diminished rhombicosidodecahedron",
+      "type": "johnson",
+      "vertices": 55
+    },
+    {
+      "edges": 105,
+      "faces": {
+        "3": 15,
+        "4": 25,
+        "5": 11,
+        "10": 1
+      },
+      "name": "metagyrate diminished rhombicosidodecahedron",
+      "type": "johnson",
+      "vertices": 55
+    },
+    {
+      "edges": 105,
+      "faces": {
+        "3": 15,
+        "4": 25,
+        "5": 11,
+        "10": 1
+      },
+      "name": "bigyrate diminished rhombicosidodecahedron",
+      "type": "johnson",
+      "vertices": 55
+    },
+    {
+      "edges": 90,
+      "faces": {
+        "3": 10,
+        "4": 20,
+        "5": 10,
+        "10": 2
+      },
+      "name": "parabidiminished rhombicosidodecahedron",
+      "type": "johnson",
+      "vertices": 50
+    },
+    {
+      "edges": 90,
+      "faces": {
+        "3": 10,
+        "4": 20,
+        "5": 10,
+        "10": 2
+      },
+      "name": "metabidiminished rhombicosidodecahedron",
+      "type": "johnson",
+      "vertices": 50
+    },
+    {
+      "edges": 90,
+      "faces": {
+        "3": 10,
+        "4": 20,
+        "5": 10,
+        "10": 2
+      },
+      "name": "gyrate bidiminished rhombicosidodecahedron",
+      "type": "johnson",
+      "vertices": 50
+    },
+    {
+      "edges": 75,
+      "faces": {
+        "3": 5,
+        "4": 15,
+        "5": 9,
+        "10": 3
+      },
+      "name": "tridiminished rhombicosidodecahedron",
+      "type": "johnson",
+      "vertices": 45
+    },
+    {
+      "edges": 18,
+      "faces": {
+        "3": 12
+      },
+      "name": "snub disphenoid",
+      "type": "johnson",
+      "vertices": 8
+    },
+    {
+      "edges": 40,
+      "faces": {
+        "3": 24,
+        "4": 2
+      },
+      "name": "snub square antiprism",
+      "type": "johnson",
+      "vertices": 16
+    },
+    {
+      "edges": 22,
+      "faces": {
+        "3": 12,
+        "4": 2
+      },
+      "name": "sphenocorona",
+      "type": "johnson",
+      "vertices": 10
+    },
+    {
+      "edges": 26,
+      "faces": {
+        "3": 16,
+        "4": 1
+      },
+      "name": "augmented sphenocorona",
+      "type": "johnson",
+      "vertices": 11
+    },
+    {
+      "edges": 28,
+      "faces": {
+        "3": 16,
+        "4": 2
+      },
+      "name": "sphenomegacorona",
+      "type": "johnson",
+      "vertices": 12
+    },
+    {
+      "edges": 33,
+      "faces": {
+        "3": 18,
+        "4": 3
+      },
+      "name": "hebesphenomegacorona",
+      "type": "johnson",
+      "vertices": 14
+    },
+    {
+      "edges": 38,
+      "faces": {
+        "3": 20,
+        "4": 4
+      },
+      "name": "disphenocingulum",
+      "type": "johnson",
+      "vertices": 16
+    },
+    {
+      "edges": 26,
+      "faces": {
+        "3": 8,
+        "4": 2,
+        "5": 4
+      },
+      "name": "bilunabirotunda",
+      "type": "johnson",
+      "vertices": 14
+    },
+    {
+      "edges": 36,
+      "faces": {
+        "3": 13,
+        "4": 3,
+        "5": 3,
+        "6": 1
+      },
+      "name": "triangular hebesphenorotunda",
+      "type": "johnson",
+      "vertices": 18
+    }
+  ]
+}
