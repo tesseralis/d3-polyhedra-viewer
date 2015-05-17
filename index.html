@@ -20,6 +20,10 @@
 
     <!-- Lodash -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/3.8.0/lodash.min.js"></script>
+
+    <!-- D3 -->
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+
   </head>
   <body style='width:100%; height:100%; border:0; margin:0; padding:0;'>
     <nav class="navbar navbar-default navbar-fixed-top" style="position:absolute; left:0px; top:0px; opacity:0.75">
@@ -35,17 +39,56 @@
     <x3d style='width:100%; height:100%; border:0; margin:0; padding:0;'> 
       <param name="disableDoubleClick" value="true"></param>
       <scene>
-        <inline id="solid" url="/test/johnson-x3d/j01.x3d"> </inline> 
+        <shape>
+          <appearance>
+            <material diffuseColor="1,0,0" />
+          </appearance>
+          <indexedfaceset >
+            <coordinate>
+            </coordinate>
+          </indexedfaceset>
+        </shape>
+
+        <shape>
+          <indexedlineset>
+            <coordinate>
+          </indexedlineset>
+        </shape>
       </scene> 
     </x3d>           
     <script>
+      var data;
       $('#jn').change(function() {
         var value = $("#jn").val();
-        if (value.length === 1) {
-          value = "0" + value;
+        if (data) {
+          render(value);
         }
-        $("#solid").attr("url", "/test/johnson-x3d/j"+value+".x3d");
       }).change();
+
+      d3.json('data/johnson-clean.json', function(error, _data) {
+        data = _data;
+        render(1);
+      });
+
+      function render(i) {
+        var solid = data[i-1];
+        var faces = d3.select("IndexedFaceSet").datum(solid);
+        var vertices = faces.select('Coordinate').datum(function(d) { return d.vertices; });
+        vertices.attr('point', function(d) {
+          return _.map(d, function(vertex) { return vertex.join(' '); }).join(', ');
+        });
+        faces.attr("coordIndex", function(d) {
+          return _.map(d.faces, function(face) { return face.join(' '); }).join(' -1 ');
+        });
+        var edges = d3.select("IndexedLineSet").datum(solid);
+        edges.attr("coordIndex", function(d) {
+          return _.map(d.edges, function(edge) { return edge.join(' '); }).join(' -1 ');
+        });
+        var vertices = edges.select('Coordinate').datum(function(d) { return d.vertices; });
+        vertices.attr('point', function(d) {
+          return _.map(d, function(vertex) { return vertex.join(' '); }).join(', ');
+        });
+      }
     </script>
         
 
