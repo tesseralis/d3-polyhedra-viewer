@@ -188,7 +188,7 @@
 
       // Get the color for a polygon with n sides
       function getColor(n) {
-        var category10 = d3.scale.category10().domain([3,4,5,6,8,10]);
+        var category10 = d3.scale.category10().domain([5,3,6,4,8,10]);
         var rgb = d3.rgb(category10(n));
         return [rgb.r, rgb.g, rgb.b].map(function(d) { return d / 255; });
       }
