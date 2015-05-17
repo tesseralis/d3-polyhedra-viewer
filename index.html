@@ -33,6 +33,8 @@
         </div>
         <form class="navbar-form navbar-left">
           <div class="form-group">
+            <button id="dec" type="button" class="btn"><span class="glyphicon glyphicon-chevron-left"></span></button>
+            <button id="inc" type="button" class="btn"><span class="glyphicon glyphicon-chevron-right"></span></button>
             <label class="sr-only" for="jn">Johnson number</label>
             <div class="input-group">
               <div class="input-group-addon">J</div>
@@ -118,12 +120,36 @@
 
       // Get the rest of the polyhedron data
       $.getJSON('/data/johnson.json', function(data) {
+        var changeSolid = function(n) {
+          if (n >= 1 && n <= 92) {
+            var solid = data[n-1];
+            $('#solid-name').attr('value', solid.name);
+            render(solid);
+          }
+        }
+        // Update the viewer based on user input
+        // TODO Use some data framework to simplify this code
         $('#jn').change(function() {
           var value = parseInt($("#jn").val());
-          var solid = data[value-1];
-          $('#solid-name').attr('value', solid.name);
-          render(solid);
+          changeSolid(value);
         }).change();
+
+        $('#dec').click(function() {
+          var value = parseInt($("#jn").val());
+          value--;
+          if (value >= 1 && value <= 92) {
+            $("#jn").val(value);
+            changeSolid(value);
+          }
+        });
+        $('#inc').click(function() {
+          var value = parseInt($("#jn").val());
+          value++;
+          if (value >= 1 && value <= 92) {
+            $("#jn").val(value);
+            changeSolid(value);
+          }
+        });
       });        
 
       // Render the given polyhedron given its geometric data
