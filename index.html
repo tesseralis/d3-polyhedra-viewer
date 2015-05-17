@@ -73,21 +73,30 @@
       function render(i) {
         var solid = data[i-1];
         var faces = d3.select("IndexedFaceSet").datum(solid);
-        var vertices = faces.select('Coordinate').datum(function(d) { return d.vertices; });
-        vertices.attr('point', function(d) {
-          return _.map(d, function(vertex) { return vertex.join(' '); }).join(', ');
-        });
+        renderVertices(faces);
         faces.attr("coordIndex", function(d) {
-          return _.map(d.faces, function(face) { return face.join(' '); }).join(' -1 ');
+          return joinListOfLists(' -1 ', ' ', d.faces);
         });
+
         var edges = d3.select("IndexedLineSet").datum(solid);
         edges.attr("coordIndex", function(d) {
-          return _.map(d.edges, function(edge) { return edge.join(' '); }).join(' -1 ');
+          return joinListOfLists(' -1 ', ' ', d.edges);
         });
-        var vertices = edges.select('Coordinate').datum(function(d) { return d.vertices; });
-        vertices.attr('point', function(d) {
-          return _.map(d, function(vertex) { return vertex.join(' '); }).join(', ');
+        renderVertices(edges);
+      }
+
+      function renderVertices(elem) {
+        elem.select('Coordinate').datum(function(d) {
+          return d.vertices; 
+        }).attr('point', function(d) {
+          return joinListOfLists(', ', ' ', d);
         });
+      }
+
+      function joinListOfLists(outerSep, innerSep, list) {
+        return _.map(list, function(elem) {
+          return elem.join(innerSep);
+        }).join(outerSep);
       }
     </script>
         
