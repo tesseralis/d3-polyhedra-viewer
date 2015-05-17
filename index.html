@@ -56,7 +56,10 @@
         </shape>
       </scene> 
     </x3d>           
+
     <script>
+      // Disable double-clicking to change rotation point
+      x3dom.Viewarea.prototype.onDoubleClick = function() {}
       // x3dom will bug out and won't process the solid data if
       // it's not seeded.
       var mock = {
