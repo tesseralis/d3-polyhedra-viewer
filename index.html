@@ -30,21 +30,29 @@
       <div class="container-fluid">
         <div class="navbar-header">
           <p class="navbar-brand">Johnson Solid Viewer</p>
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-input">
+<span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
         </div>
-        <form class="navbar-form navbar-left">
-          <div class="form-group">
-            <button id="dec" type="button" class="btn"><span class="glyphicon glyphicon-chevron-left"></span></button>
-            <button id="inc" type="button" class="btn"><span class="glyphicon glyphicon-chevron-right"></span></button>
-            <label class="sr-only" for="jn">Johnson number</label>
-            <div class="input-group">
-              <div class="input-group-addon">J</div>
-              <input class="form-control" type="number" id="jn" value="1" min="1" max="92" placeholder="Enter Johnson number">
+        <div id="nav-input" class="collapse navbar-collapse">
+          <form class="navbar-form navbar-left">
+            <div class="form-group">
+              <button id="dec" type="button" class="btn"><span class="glyphicon glyphicon-chevron-left"></span></button>
+              <button id="inc" type="button" class="btn"><span class="glyphicon glyphicon-chevron-right"></span></button>
+              <label class="sr-only" for="jn">Johnson number</label>
+              <div class="input-group">
+                <div class="input-group-addon">J</div>
+                <input class="form-control" type="number" id="jn" value="1" min="1" max="92" placeholder="Enter Johnson number">
+              </div>
             </div>
-          </div>
-          <input id="solid-name" class="form-control" type="text" value="square pyramid" placeholder="Solid name here..." readonly>
-        </form>
-        <!-- Button trigger modal -->
-        <button type="button" class="pull-right btn navbar-btn" data-toggle="modal" data-target="#info"><span class="glyphicon glyphicon-info-sign"></span></button>
+            <input id="solid-name" class="form-control" type="text" value="square pyramid" placeholder="Solid name here..." readonly>
+          </form>
+          <!-- Button trigger modal -->
+          <button type="button" class="btn navbar-btn" data-toggle="modal" data-target="#info"><span class="glyphicon glyphicon-info-sign"></span></button>
+        </div>
       </div>
     </nav>
 
