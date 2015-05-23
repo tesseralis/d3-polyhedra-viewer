@@ -40,28 +40,6 @@
 
         <div class="collapse navbar-collapse" id="navbar-collapse">
           <ul id="dropdowns" class="nav navbar-nav">
-            <!--
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Platonic <span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="#">Tetrahedron</a></li>
-                <li><a href="#">Cube</a></li>
-                <li><a href="#">Octahedron</a></li>
-                <li><a href="#">Dodecahedron</a></li>
-                <li><a href="#">Icosahedron</a></li>
-              </ul>
-            </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Archimedean <span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="#">Truncated Tetrahedron</a></li>
-                <li><a href="#">Truncated Cube</a></li>
-                <li><a href="#">Truncated Octahedron</a></li>
-                <li><a href="#">Truncated Dodecahedron</a></li>
-                <li><a href="#">Truncated Icosahedron</a></li>
-              </ul>
-            </li>
-            -->
           </ul>
         </div>
       </div>
@@ -112,8 +90,6 @@
       // Get the rest of the polyhedron data
       d3.json('data/polyhedra.json', function(error, data) {
         // Update the UI with the names
-        //d3.selectAll('.navbar').data(data)
-        //  .enter().append('li')
         var groups = data.groups;
         console.log(groups);
         var dropdowns = d3.select("#dropdowns");
@@ -128,7 +104,10 @@
 
         var solids = lists.append('ul')
           .classed('dropdown-menu', true)
-          .attr('role', 'menu');
+          .attr('role', 'menu')
+          .style('height', 'auto')
+          .style('max-height', '400px')
+          .style('overflow-x', 'hidden');
 
         var elts = solids.selectAll('li').data(function(d) { return d.polyhedra; })
           .enter().append('li');
