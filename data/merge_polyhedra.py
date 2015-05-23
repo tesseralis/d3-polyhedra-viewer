@@ -14,7 +14,7 @@ def merge_group(group_name):
   return result
 
 def merge_groups(*group_names):
-  return {group_name: merge_group(group_name) for group_name in group_names}
+  return [{"group_name": group_name, "polyhedra": merge_group(group_name)} for group_name in group_names]
 
 if __name__ == "__main__":
-  print json.dumps(merge_groups('platonic', 'archimedean', 'prisms', 'antiprisms', 'johnson'))
+  print json.dumps({"groups": merge_groups('platonic', 'archimedean', 'prisms', 'antiprisms', 'johnson')})
