@@ -1,0 +1,5 @@
+triangular prism
+pentagonal prism
+hexagonal prism
+octagonal prism
+decagonal prism
