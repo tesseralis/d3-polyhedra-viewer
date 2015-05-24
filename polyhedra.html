@@ -110,12 +110,22 @@
           .style('overflow-x', 'hidden');
 
         var elts = solids.selectAll('li').data(function(d) { return d.polyhedra; })
-          .enter().append('li');
+        .enter().append('li')
+        .on('click', function(d) {
+          d3.selectAll('li').classed('active', false);
+          d3.select(this).classed('active', true);
+        });
 
         elts.append('a')
         .attr('href', '#')
         .text(function(d) { return d.name; })
-        .on('click', function(d) { render(d); });
+        .on('click', function(d) {
+          render(d); 
+        });
+
+        $('.dropdown-menu li').click(function(e) {
+                  e.stopPropagation();
+                      });
       });
 
       // Render the given polyhedron given its geometric data
