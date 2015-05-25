@@ -39,7 +39,8 @@
         </div>
 
         <div class="collapse navbar-collapse" id="navbar-collapse">
-          <ul id="dropdowns" class="nav navbar-nav">
+          <h4 id="polyhedron-name" class="navbar-text">tetrahedron</h4>
+          <ul id="dropdowns" class="nav navbar-nav navbar-right">
           </ul>
         </div>
 
@@ -132,12 +133,9 @@
         });
 
         elts.append('a')
-        .attr('href', function(d) { 
-          // TODO Make this less hacky!
-          // TODO when the user changes the URL, render the right polyhedron
-          return '#' + d3.select(this.parentNode.parentNode).datum().group_name + '/' + d.name.replace(/ /g, '-'); })
         .text(function(d) { return d.name; })
         .on('click', function(d) {
+          d3.select('#polyhedron-name').text(d.name);
           render(d); 
         });
 
