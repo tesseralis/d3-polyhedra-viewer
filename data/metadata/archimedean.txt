@@ -4,10 +4,10 @@ truncated cube
 truncated octahedron
 rhombicuboctahedron
 truncated cuboctahedron
-snub cuboctahedron
+snub cube
 icosidodecahedron
 truncated dodecahedron
 truncated icosahedron
 rhombicosidodecahedron
 truncated icosidodecahedron
-snub icosidodecahedron
+snub dodecahedron

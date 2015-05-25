@@ -6,7 +6,7 @@ import json
 
 def merge_group(group_name):
   result = []
-  with open(group_name + ".txt") as f:
+  with open('metadata/{0}.txt'.format(group_name)) as f:
     names = [l.strip('\n') for l in f.readlines()]
   for name in names:
     with open('polyhedra/{0}/{1}.json'.format(group_name, name.replace(' ', '_')), 'r') as f:
