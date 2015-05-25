@@ -100,7 +100,7 @@
         links.classed('dropdown-toggle', true)
           .attr('data-toggle', 'dropdown')
           .attr('role', 'button')
-          .text(function(d) { return d.group_name; });
+          .text(function(d) { return d.group_name.toUpperCase(); });
 
         var solids = lists.append('ul')
           .classed('dropdown-menu', true)
