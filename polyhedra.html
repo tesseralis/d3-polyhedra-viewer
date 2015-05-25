@@ -117,7 +117,7 @@
         });
 
         elts.append('a')
-        .attr('href', '#')
+        .attr('href', function(d) { return '#' + d.name.replace(/ /g, '-'); })
         .text(function(d) { return d.name; })
         .on('click', function(d) {
           render(d); 
