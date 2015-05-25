@@ -91,10 +91,10 @@
       d3.json('data/polyhedra.json', function(error, data) {
         // Update the UI with the names
         var groups = data.groups;
-        console.log(groups);
         var dropdowns = d3.select("#dropdowns");
         var lists = dropdowns.selectAll('li.dropdown').data(groups);
 
+        // TODO replace this with dropdown buttons so that we can highlight
         lists.enter().append('li').classed('dropdown', true);
         var links = lists.append('a');
         links.classed('dropdown-toggle', true)
@@ -117,7 +117,10 @@
         });
 
         elts.append('a')
-        .attr('href', function(d) { return '#' + d.name.replace(/ /g, '-'); })
+        .attr('href', function(d) { 
+          // TODO Make this less hacky!
+          // TODO when the user changes the URL, render the right polyhedron
+          return '#' + d3.select(this.parentNode.parentNode).datum().group_name + '/' + d.name.replace(/ /g, '-'); })
         .text(function(d) { return d.name; })
         .on('click', function(d) {
           render(d); 
